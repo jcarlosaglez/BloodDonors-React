@@ -10,25 +10,25 @@ import About from './About.js';
 import Users from './Users.js';
 
 export default function App() {
+  const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white font-black";
   return (
     <Router>
-      <div>
-        <nav>
+      <div className="bg-red-200 w-full">
+        <nav className="fixed top-0 bg-red-500 w-full ">
           <ul className="inline-block">
-            <li className="inline-block p-2 my-1 ml-10 rounded hover:bg-blue-300 hover:text-white">
+            <li className={navLinkClass}>
               <Link to="/">Home</Link>
             </li>
-            <li className="inline-block p-2 mx-10 rounded hover:bg-blue-300 hover:text-white">
+            <li className={navLinkClass}>
               <Link to="/about">About</Link>
             </li>
-            <li className="inline-block p-2 rounded hover:bg-blue-300 hover:text-white">
+            <li className={navLinkClass}>
               <Link to="/users">Users</Link>
             </li>
           </ul>
         </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+        {/* Las rutas van en sentido inverso de prioridad */}
         <Switch>
           <Route path="/about">
             <About />
