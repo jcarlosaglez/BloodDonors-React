@@ -13,7 +13,7 @@ export default function App() {
   const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white font-black";
   return (
     <Router>
-      <div className="bg-red-200 w-full">
+      <div className="w-full">
         <nav className="fixed top-0 bg-red-500 w-full ">
           <ul className="inline-block">
             <li className={navLinkClass}>
