@@ -7,13 +7,13 @@ import {
 import '../css/App.css';
 import Home from './Home.js';
 import About from './About.js';
-import Users from './Users.js';
+import Inf from './Inf.js';
 
 export default function App() {
-  const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white font-black";
+  const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white hover:text-red-500 font-black";
   return (
     <Router>
-      <div className="bg-red-200 w-full">
+      <div className="w-full">
         <nav className="fixed top-0 bg-red-500 w-full ">
           <ul className="inline-block">
             <li className={navLinkClass}>
@@ -23,7 +23,7 @@ export default function App() {
               <Link to="/about">About</Link>
             </li>
             <li className={navLinkClass}>
-              <Link to="/users">Users</Link>
+              <Link to="/inf">Información</Link>
             </li>
           </ul>
         </nav>
@@ -33,8 +33,8 @@ export default function App() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/inf">
+            <Inf />
           </Route>
           <Route path="/">
             <Home />
