@@ -8,8 +8,8 @@ function CardHero(props) {
                 <img className="m-auto w-full h-full max-h-32 rounded" src={props.datos.url} alt={props.datos.alt}></img>
             </div>
             <hr />
-            <div>
-                <h3 className="my-5 text-center font-mono"> {props.datos.title} </h3>
+            <div className="px-1">
+                <h3 className="my-5 text-center font-mono text-xl"> {props.datos.title} </h3>
                 <p className="text-center font-serif"> {props.datos.text} </p>
             </div>
         </article>
