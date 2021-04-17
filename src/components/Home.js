@@ -3,8 +3,8 @@ import HeaderCom from "./HeaderCom";
 import SecTitle from "./SecTitle";
 import Container from "./Container";
 import BigInf from "./BigInf";
-import DataCard from "../assets/data/tiposSanguineos";
-import DataInf from "../assets/data/beneficios";
+import DataCard from "../assets/data/datosCards";
+import DataInf from "../assets/data/datosGrande";
 
 function Home(props) {
     return (
@@ -17,7 +17,7 @@ function Home(props) {
         <SecTitle title="¿Por qué donar sangre?" />
         <BigInf data={DataInf[0]} rev={true}/>
         <Container data={DataCard[0]} />
-        <SecTitle title="Beneficios" />
+        <SecTitle title="Grupos Sanguíneos" />
         <Container data={DataCard[1]} />
     </>
     );

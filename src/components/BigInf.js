@@ -1,8 +1,8 @@
 import React from "react";
 
 function BigInf(props) {
-    const classRec = "mx-auto w-11/12 p-5 flex flex-col sm:flex-row justify-around border-2 rounded";
-    const classRecRev = "mx-auto w-11/12 p-5 flex flex-col sm:flex-row-reverse justify-around border-2 rounded";
+    const classRec = "mx-auto my-10 w-11/12 p-5 flex flex-col sm:flex-row justify-around border-2 rounded";
+    const classRecRev = "mx-auto my-10 w-11/12 p-5 flex flex-col sm:flex-row-reverse justify-around border-2 rounded";
     
     return (
         <section className={props.rev ? classRecRev : classRec }>
