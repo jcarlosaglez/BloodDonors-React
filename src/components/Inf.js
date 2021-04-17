@@ -11,7 +11,7 @@ function Users() {
         <HeaderCom
         mensaje="Requisitos para donar sangre"
         colorT="white"
-        imagen="https://images.unsplash.com/photo-1524721696987-b9527df9e512?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=890&q=80"
+        imagen="https://images.unsplash.com/photo-1519032465794-2da0ceef0b63?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
         />
         <SecTitle title="Los requisitos mínimos para donar sangre"/>
         <ListOrden data={requirements} />
