@@ -8,6 +8,9 @@ import '../css/App.css';
 import Home from './Home.js';
 import About from './About.js';
 import Inf from './Inf.js';
+import Signin from './Signin';
+import SigninDonor from './SigninDonor';
+import Login from './Login';
 
 export default function App() {
   const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white hover:text-red-500 font-black";
@@ -25,11 +28,26 @@ export default function App() {
             <li className={navLinkClass}>
               <Link to="/inf">Información</Link>
             </li>
+            <li className={navLinkClass}>
+              <Link to="/LogIn">Login</Link>
+            </li>
+            <li className={navLinkClass}>
+              <Link to="/SignIn">Signin</Link>
+            </li>
           </ul>
         </nav>
 
         {/* Las rutas van en sentido inverso de prioridad */}
         <Switch>
+          <Route path="/LogIn">
+            <Login />
+          </Route>
+          <Route path="/SignIn">
+            <Signin />
+          </Route>
+          <Route path="/SignInDonor">
+            <SigninDonor />
+          </Route>
           <Route path="/about">
             <About />
           </Route>
