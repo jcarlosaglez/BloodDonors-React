@@ -11,6 +11,8 @@ import Signin from './Signin';
 import SigninDonor from './SigninDonor.js';
 import Login from './Login';
 import NavBar from './NavBar';
+import DonorsList from "./DonorsList";
+import Donor from "./Donor";
 
 export default function App() {
   return (
@@ -25,6 +27,10 @@ export default function App() {
               <Link to="/about">About</Link>
             </li>
             <li className="link">
+            <li className={navLinkClass}>
+              <Link to="/donors">Donadores</Link>
+            </li>
+            <li className={navLinkClass}>
               <Link to="/inf">Información</Link>
             </li>
             <li className="link">
@@ -41,6 +47,12 @@ export default function App() {
         <Switch>
           <Route path="/LogIn">
             <Login />
+          </Route>
+          <Route path="/donors/:id">
+            <Donor />
+          </Route>
+          <Route path="/donors">
+            <DonorsList />
           </Route>
           <Route path="/SignIn">
             <Signin />
