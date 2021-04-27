@@ -7,31 +7,30 @@ import '../css/App.css';
 import Home from './Home.js';
 import About from './About.js';
 import Inf from './Inf.js';
-import NavBar from './NavBar';
 import Signin from './Signin';
-import SigninDonor from './SigninDonor';
+import SigninDonor from './SigninDonor.js';
 import Login from './Login';
+import NavBar from './NavBar';
 
 export default function App() {
   return (
     <Router>
-      <div className="w-full">
-        {/*
-        <nav className="fixed top-0 bg-red-500 w-full ">
+      <div className="w-full">     
+        {/* <nav className="fixed top-0 bg-red-500 w-full ">
           <ul className="inline-block">
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/">Home</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/about">About</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/inf">Información</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/LogIn">Login</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/SignIn">Signin</Link>
             </li>
           </ul>
