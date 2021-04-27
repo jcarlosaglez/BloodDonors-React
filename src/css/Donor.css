@@ -1,0 +1,29 @@
+.donor-details {
+    margin: 5em auto;
+    width: 95%;
+}
+
+.donor-details > h1 {
+    font-size: 2em;
+    font-weight: bold;   
+}
+
+.donor-details > .flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.donor-details > .flex a {
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    color: #fff;
+    background-color: gray;
+    box-shadow: black;
+    border-radius: 7px;
+}
+
+@media (min-width: 768px) {
+    .donor-details {
+        width: 50%;
+    }       
+}

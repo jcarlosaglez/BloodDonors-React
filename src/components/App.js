@@ -11,6 +11,8 @@ import Inf from './Inf.js';
 import Signin from './Signin';
 import SigninDonor from './SigninDonor';
 import Login from './Login';
+import DonorsList from "./DonorsList";
+import Donor from "./Donor";
 
 export default function App() {
   const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white hover:text-red-500 font-black";
@@ -24,6 +26,9 @@ export default function App() {
             </li>
             <li className={navLinkClass}>
               <Link to="/about">About</Link>
+            </li>
+            <li className={navLinkClass}>
+              <Link to="/donors">Donadores</Link>
             </li>
             <li className={navLinkClass}>
               <Link to="/inf">Información</Link>
@@ -41,6 +46,12 @@ export default function App() {
         <Switch>
           <Route path="/LogIn">
             <Login />
+          </Route>
+          <Route path="/donors/:id">
+            <Donor />
+          </Route>
+          <Route path="/donors">
+            <DonorsList />
           </Route>
           <Route path="/SignIn">
             <Signin />
