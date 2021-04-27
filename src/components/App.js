@@ -8,6 +8,9 @@ import Home from './Home.js';
 import About from './About.js';
 import Inf from './Inf.js';
 import NavBar from './NavBar';
+import Signin from './Signin';
+import SigninDonor from './SigninDonor';
+import Login from './Login';
 
 export default function App() {
   return (
@@ -25,12 +28,27 @@ export default function App() {
             <li className={navLinkClass}>
               <Link to="/inf">Información</Link>
             </li>
+            <li className={navLinkClass}>
+              <Link to="/LogIn">Login</Link>
+            </li>
+            <li className={navLinkClass}>
+              <Link to="/SignIn">Signin</Link>
+            </li>
           </ul>
         </nav> */}
         <NavBar />
 
         {/* Las rutas van en sentido inverso de prioridad */}
         <Switch>
+          <Route path="/LogIn">
+            <Login />
+          </Route>
+          <Route path="/SignIn">
+            <Signin />
+          </Route>
+          <Route path="/SignInDonor">
+            <SigninDonor />
+          </Route>
           <Route path="/about">
             <About />
           </Route>
