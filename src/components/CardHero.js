@@ -1,20 +1,51 @@
-import React from "react";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
 function CardHero(props) {
-    return (
-    <div className="my-5">
-        <article className="w-4/5 h-96 p-2 mx-auto border-2 rounded shadow-xl bg-white">
-            <div className="w-4/5 h-2/5 mt-4 mx-auto ">
-                <img className="m-auto w-full h-full max-h-32 rounded" src={props.datos.url} alt={props.datos.alt}></img>
-            </div>
-            <hr />
-            <div className="px-1">
-                <h3 className="my-5 text-center font-mono text-xl"> {props.datos.title} </h3>
-                <p className="text-center font-serif"> {props.datos.text} </p>
-            </div>
-        </article>
-    </div>
-    );
-  }
+    const classes = useStyles();
 
+    return (
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={props.datos.url}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+                {props.datos.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+                {props.datos.text}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions>
+      </Card>
+    );
+}
 export default CardHero;
