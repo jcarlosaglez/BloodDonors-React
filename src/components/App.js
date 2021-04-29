@@ -14,6 +14,8 @@ import NavBar from './NavBar';
 import DonorsList from "./DonorsList";
 import Donor from "./Donor";
 
+import ButtonAppBar from "./MaterialNavBar";
+
 export default function App() {
   return (
     <Router>
@@ -41,7 +43,9 @@ export default function App() {
             </li>
           </ul>
         </nav> */}
-        <NavBar />
+        {/* <NavBar /> */}
+
+        <ButtonAppBar />
 
         {/* Las rutas van en sentido inverso de prioridad */}
         <Switch>

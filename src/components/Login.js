@@ -2,6 +2,14 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 function Login() {
+
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+
+
+
+    // Estado de inputs
+
     return (
         <div className="mt-28 md:mt-16 md:w-3/12 sm:w-full mx-auto">
             <div className="mt-5 md:mt-0 md:col-span-2">
@@ -20,6 +28,8 @@ function Login() {
                                         name="email_address"
                                         id="email_address"
                                         autoComplete="email"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        value={email}
                                         className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
                                         placeholder="correo@dominio.com"
                                     />
@@ -32,8 +42,10 @@ function Login() {
                                     <input
                                         type="password"
                                         name="password"
+                                        onChange={(e) => setPassword(e.target.value)}
                                         id="password"
                                         autoComplete="email"
+                                        value={password}
                                         className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
                                     />
                                 </div>
