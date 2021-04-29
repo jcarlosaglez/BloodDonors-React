@@ -1,0 +1,11 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar ul li{
+    display: inline-block;
+    margin: 0 20px;
+}
+@media(min-width:1024px) {
+}
+ 

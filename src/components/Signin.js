@@ -1,32 +1,80 @@
-import React from "react";
+import React, {useState} from 'react';
+
 import "../css/Form.css";
-import {Link} from "react-router-dom";
+// import InputOfText from "./InputOfText";
 
+const URL = "https://blood-donors-v1.herokuapp.com/v1/receivers/ "
 function Signin() {
-    return (
-        <div className="mt-28 md:mt-16 md:w-3/12 sm:w-full mx-auto">
-            <div className="mt-5 md:mt-0 md:col-span-2">
-                <form action="#" method="POST">
-                    <div className="shadow overflow-hidden sm:rounded-md border">
-                        <h1 className="mt-5 text-center text-2xl text-gray-700">Registro de receptor</h1>
+    const [todos, setTodos] = React.useState([]);
+    const [datos, setDatos] = useState({
+        curp: '',
+        first_name: '',
+        last_name: '',
+        birthday: '',
+        gender: '',
+        email: '',
+        phone_number: '',
+        password: '',
+    })
+    const handleInputChange = (event) => {
+        setDatos({
+            ...datos,
+            [event.target.name] : event.target.value
+        })
+    }
+    const goToBackend = (config, data) => {
+        return fetch(config.url, {
+          method: config.method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: data ? JSON.stringify(data) : null
+        })
+    }
+    
+    const enviarDatos = async (event) => {
+        event.preventDefault()
 
-                        <div className="px-4 py-5 bg-white sm:p-6">
+        //Servidor
+        const config ={
+            url: URL,
+            method: "POST"
+        };
+        try {
+            const response = await goToBackend(config, datos);
+            if (!response.ok) throw new Error("Response not ok");
+            const todo = await response.json();
+            setTodos(todos.concat([todo]));
+        } catch (error) {
+            console.error(error);
+        }
+        console.log('enviando datos...' + datos.curp + ' ' + datos.first_name + ' ' + datos.birthday + ' ' + datos.gender)
+    }
+    return (
+        <>
+            <div>
+                <form onSubmit={enviarDatos}>
+                <div className="">
+                        <h1 className="">Registro de receptor</h1>
+
+                        <div className="">
                             <div className="">
-                                <div className="w-full mx-auto">
-                                    <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="curp" className="">
                                         Curp:
                                     </label>
                                     <input
                                         type="text"
-                                        name="first_name"
-                                        id="first_name"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        name="curp"
+                                        id="curp"
+                                        className=""
                                         placeholder="XXXX000000XXXXXX00"
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="first_name" className="">
                                         Nombre(s):
                                     </label>
                                     <input
@@ -34,55 +82,58 @@ function Signin() {
                                         name="first_name"
                                         id="first_name"
                                         autoComplete="email"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
                                         placeholder="Carlos"
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
                                 <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="last_names" className="block text-sm font-medium text-gray-700">
+                                    <label htmlFor="last_names" className="">
                                         Apellidos:
                                     </label>
                                     <input
                                         type="text"
                                         name="last_names"
                                         id="last_names"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
                                         placeholder="Perez"
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="birthday" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="birthday" className="">
                                         Fecha de nacimiento:
                                     </label>
                                     <input
                                         type="date"
                                         name="birthday"
                                         id="birthday"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="last_names" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="last_names" className="">
                                         Genero:
                                     </label>
 
-                                    <div class="flex justify-center mt-1">
-                                        <input class="hidden" type="radio" id="male" value="male" name="gender" />
-                                        <label class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 cursor-pointer rounded-l" for="male">Hombre</label>
+                                    <div className="">
+                                        <input className="" type="radio" id="male" value="male" name="gender" onChange={handleInputChange}/>
+                                        <label className="">Hombre</label>
 
-                                        <input class="hidden" type="radio" id="female" value="female" name="gender" />
-                                        <label class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 cursor-pointer" for="female">Mujer</label>
+                                        <input className="" type="radio" id="female" value="female" name="gender" onChange={handleInputChange}/>
+                                        <label className="" htmlFor="female">Mujer</label>
                                         
-                                        <input class="hidden" type="radio" id="non-binary" value="non-binary" name="gender" />
-                                        <label class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 cursor-pointer rounded-r" for="non-binary">No Binario</label>
+                                        <input className="" type="radio" id="non-binary" value="non-binary" name="gender" onChange={handleInputChange}/>
+                                        <label className="" htmlFor="non-binary">No Binario</label>
                                     </div>
                                 </div>
                                 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="email_address" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="email_address" className="">
                                         Correo:
                                     </label>
                                     <input
@@ -90,13 +141,14 @@ function Signin() {
                                         name="email_address"
                                         id="email_address"
                                         autoComplete="email"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
                                         placeholder="correo@dominio.com"
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="password" className="">
                                         Contraseña:
                                     </label>
                                     <input
@@ -104,41 +156,44 @@ function Signin() {
                                         name="password"
                                         id="password"
                                         autoComplete="email"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
                                 <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                                    <label htmlFor="phone" className="">
                                         Telefono:
                                     </label>
                                     <input
                                         type="tel"
                                         name="phone"
                                         id="phone"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
                                         placeholder="0000000000"
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="place" className="block text-sm font-medium text-gray-700">
+                                <div className="">
+                                    <label htmlFor="place" className="">
                                         Lugar de residencia:
                                     </label>
                                     <input
                                         type="text"
                                         name="place"
                                         id="place"
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+                                        className=""
                                         placeholder="ciudad - codigo postal"
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                             </div>
                         </div>
-                        <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <div className="">
                             <button
                                 type="submit"
-                                className="w-full md:w-auto inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                                className=""
                             >
                             Registro
                             </button>
@@ -147,12 +202,9 @@ function Signin() {
                 </form>
             </div>
 
-            <div className="mt-3 text-center">
-                <Link to="/SigninDonor">Registro de donador</Link>
-                <p>¿Ya tienes una cuenta? <Link to="/Login">Iniciar sesión aquí</Link></p>
-            </div>
-        </div>
+        </>
     );
 }
+
 
 export default Signin;
