@@ -2,45 +2,46 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import '../css/App.css';
 import Home from './Home.js';
 import About from './About.js';
 import Inf from './Inf.js';
 import Signin from './Signin';
-import SigninDonor from './SigninDonor';
+import SigninDonor from './SigninDonor.js';
 import Login from './Login';
+import NavBar from './NavBar';
 import DonorsList from "./DonorsList";
 import Donor from "./Donor";
 
 export default function App() {
-  const navLinkClass = "inline-block p-2 my-1 ml-10 rounded hover:bg-red-200 text-white hover:text-red-500 font-black";
   return (
     <Router>
-      <div className="w-full">
-        <nav className="fixed top-0 bg-red-500 w-full ">
+      <div className="w-full">     
+        {/* <nav className="fixed top-0 bg-red-500 w-full ">
           <ul className="inline-block">
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/">Home</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/about">About</Link>
             </li>
+            <li className="link">
             <li className={navLinkClass}>
               <Link to="/donors">Donadores</Link>
             </li>
             <li className={navLinkClass}>
               <Link to="/inf">Información</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/LogIn">Login</Link>
             </li>
-            <li className={navLinkClass}>
+            <li className="link">
               <Link to="/SignIn">Signin</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
+        <NavBar />
 
         {/* Las rutas van en sentido inverso de prioridad */}
         <Switch>
