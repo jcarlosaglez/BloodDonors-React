@@ -5,16 +5,17 @@ import "../css/Form.css";
 
 const URL = "https://blood-donors-v1.herokuapp.com/v1/receivers/ "
 function Signin() {
-    const [todos, setTodos] = React.useState([]);
-    const [datos, setDatos] = useState({
-        curp: '',
-        first_name: '',
-        last_name: '',
-        birthday: '',
-        gender: '',
-        email: '',
-        phone_number: '',
-        password: '',
+    const [data, setData] = React.useState({});
+    const [datos, setDatos] = useState({        
+        "curp": "",
+        "first_name": "",
+        "last_name": "",
+        "birthday": "",
+        "gender": "",
+        "email": "",
+        "phone_number": "",
+        "place_of_residence": "",
+        "password":""        
     })
     const handleInputChange = (event) => {
         setDatos({
@@ -26,9 +27,10 @@ function Signin() {
         return fetch(config.url, {
           method: config.method,
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
-          body: data ? JSON.stringify(data) : null
+          body: JSON.stringify(data)
         })
     }
     
@@ -42,13 +44,13 @@ function Signin() {
         };
         try {
             const response = await goToBackend(config, datos);
-            if (!response.ok) throw new Error("Response not ok");
+            if (!response.ok) /* throw new Error("Response not ok", response); */console.log(response);
             const todo = await response.json();
-            setTodos(todos.concat([todo]));
+            setData(todo);
+            console.log("data", data);
         } catch (error) {
             console.error(error);
         }
-        console.log('enviando datos...' + datos.curp + ' ' + datos.first_name + ' ' + datos.birthday + ' ' + datos.gender)
     }
     return (
         <>
@@ -81,7 +83,7 @@ function Signin() {
                                         type="text"
                                         name="first_name"
                                         id="first_name"
-                                        autoComplete="email"
+                                        autoComplete="first_name"
                                         className=""
                                         placeholder="Carlos"
                                         onChange={handleInputChange}
@@ -89,13 +91,13 @@ function Signin() {
                                 </div>
 
                                 <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="last_names" className="">
+                                    <label htmlFor="last_name" className="">
                                         Apellidos:
                                     </label>
                                     <input
                                         type="text"
-                                        name="last_names"
-                                        id="last_names"
+                                        name="last_name"
+                                        id="last_name"
                                         className=""
                                         placeholder="Perez"
                                         onChange={handleInputChange}
@@ -116,7 +118,7 @@ function Signin() {
                                 </div>
 
                                 <div className="">
-                                    <label htmlFor="last_names" className="">
+                                    <label htmlFor="" className="">
                                         Genero:
                                     </label>
 
@@ -133,13 +135,13 @@ function Signin() {
                                 </div>
                                 
                                 <div className="">
-                                    <label htmlFor="email_address" className="">
+                                    <label htmlFor="email" className="">
                                         Correo:
                                     </label>
                                     <input
                                         type="text"
-                                        name="email_address"
-                                        id="email_address"
+                                        name="email"
+                                        id="email"
                                         autoComplete="email"
                                         className=""
                                         placeholder="correo@dominio.com"
@@ -155,20 +157,19 @@ function Signin() {
                                         type="password"
                                         name="password"
                                         id="password"
-                                        autoComplete="email"
                                         className=""
                                         onChange={handleInputChange}
                                     />
                                 </div>
 
                                 <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="phone" className="">
+                                    <label htmlFor="phone_number" className="">
                                         Telefono:
                                     </label>
                                     <input
                                         type="tel"
-                                        name="phone"
-                                        id="phone"
+                                        name="phone_number"
+                                        id="phone_number"
                                         className=""
                                         placeholder="0000000000"
                                         onChange={handleInputChange}
@@ -176,13 +177,13 @@ function Signin() {
                                 </div>
 
                                 <div className="">
-                                    <label htmlFor="place" className="">
+                                    <label htmlFor="place_of_residence" className="">
                                         Lugar de residencia:
                                     </label>
                                     <input
                                         type="text"
-                                        name="place"
-                                        id="place"
+                                        name="place_of_residence"
+                                        id="place_of_residence"
                                         className=""
                                         placeholder="ciudad - codigo postal"
                                         onChange={handleInputChange}
