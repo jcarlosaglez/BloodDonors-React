@@ -3,7 +3,7 @@ import {
     Link
   } from "react-router-dom";
 
-function HeaderCom(props) {
+function HeaderGeneral(props) {
     const col = props.colorT;
     const imgUrl = props.imagen;
 
@@ -29,4 +29,4 @@ function HeaderCom(props) {
     );
   }
 
-export default HeaderCom;
+export default HeaderGeneral;

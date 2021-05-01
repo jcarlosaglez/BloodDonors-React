@@ -1,7 +1,6 @@
 import React from "react";
-import Card from "./Card";
 
-function TranspSec(props) {
+function SectionBGTransparent(props) {
     const imgUrl = props.imagen;
 
     const divStyle = {
@@ -11,19 +10,13 @@ function TranspSec(props) {
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed',
     };
-
-    const data = props.data;
-    let roots = data.map((product, index, array) => {
-        return <Card datos={product} key={index} />;})
     return (
         <section className="" style={divStyle}>
             <h2 className=""> HOla </h2>
             <h3> Que tal</h3>
-            <div className="">
-                {roots}   
-            </div>
+            {props.children}
         </section>
         )
     }
 
-export default TranspSec;
+export default SectionBGTransparent;

@@ -10,7 +10,6 @@ import Inf from './Inf.js';
 import Signin from './Signin';
 import SigninDonor from './SigninDonor.js';
 import Login from './Login';
-import NavBar from './NavBar';
 import DonorsList from "./DonorsList";
 import Donor from "./Donor";
 
