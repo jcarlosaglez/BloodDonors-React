@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import '../css/App.css';
 import Home from './Home.js';
-import About from './About.js';
-import Inf from './Inf.js';
+import About from './AboutUs.js';
+import Information from './Information.js';
 import Signin from './Signin';
 import SigninDonor from './SigninDonor.js';
 import Login from './Login';
@@ -67,7 +67,7 @@ export default function App() {
             <About />
           </Route>
           <Route path="/inf">
-            <Inf />
+            <Information />
           </Route>
           <Route path="/">
             <Home />

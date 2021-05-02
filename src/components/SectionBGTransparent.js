@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/SectionBGTransparent.css'
 
 function SectionBGTransparent(props) {
     const imgUrl = props.imagen;
@@ -11,7 +12,7 @@ function SectionBGTransparent(props) {
         backgroundAttachment: 'fixed',
     };
     return (
-        <section className="" style={divStyle}>
+        <section className="ContainerTransparent" style={divStyle}>
             <h2 className=""> HOla </h2>
             <h3> Que tal</h3>
             {props.children}
