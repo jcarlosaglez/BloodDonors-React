@@ -1,0 +1,54 @@
+.headerGeneral{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.headerGeneral div{
+    display: inline-block;
+    width: 100%;
+    padding: 0px 10px;
+}
+.headerGeneral div h2{
+    font-size: 30px;
+    text-align: center;
+}
+.containerButton{
+    width: 100%;
+    text-align: center;
+}
+.button{
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid red;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: larger;
+    margin: 30px 10px;
+}
+.button:hover{
+    background-color: red;
+    color: aliceblue;
+}
+
+@media (min-width: 576px) { 
+    .headerGeneral{
+        height: 100vh;
+    }
+    .headerGeneral div h2{
+        font-size: 40px;
+    }
+ }
+
+@media (min-width: 768px) { 
+    .headerGeneral div:first-child{
+        width: 50%;
+    }
+ }
+
+@media (min-width: 992px) {  }
+
+@media (min-width: 1200px) {  }

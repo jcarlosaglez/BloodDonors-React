@@ -1,10 +1,10 @@
 import React from "react";
-import HeaderCom from "./HeaderCom";
+import HeaderGeneral from "./HeaderGeneral";
 
 function Nosotros() {
     return (
       <>
-        <HeaderCom
+        <HeaderGeneral
         mensaje="Somos un grupo de desarrolladores mexicanos"
         colorT="white"
         buttonMos="none"

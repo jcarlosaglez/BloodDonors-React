@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import "../css/Form.css";
 // import InputOfText from "./InputOfText";
 
-const URL = "https://blood-donors-v1.herokuapp.com/v1/receivers/ "
+const URL = "https://blood-donors-v1.herokuapp.com/v1/receivers/"
 function Signin() {
     const [data, setData] = React.useState({});
     const [datos, setDatos] = useState({        
@@ -47,7 +47,7 @@ function Signin() {
             if (!response.ok) /* throw new Error("Response not ok", response); */console.log(response);
             const todo = await response.json();
             setData(todo);
-            console.log("data", data);
+            console.log("data", data, response);
         } catch (error) {
             console.error(error);
         }

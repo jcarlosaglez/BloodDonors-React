@@ -1,6 +1,6 @@
 import React from "react";
 
-function SecTitle(props) {
+function SectionOfTitle(props) {
 
     return (
     <>
@@ -11,4 +11,4 @@ function SecTitle(props) {
     );
   }
 
-export default SecTitle;
+export default SectionOfTitle;

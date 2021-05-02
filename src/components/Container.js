@@ -1,13 +1,17 @@
-import React from "react";
-import CardHero from "./CardHero";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Card from "./Card";
+
 
 function Container(props) {
     const data = props.data;
     let roots = data.map((product, index, array) => {
-        return <CardHero datos={product} key={index} />;})
+        return  <Grid key={index} item xs={12} sm={6}  lg={3}> <Card datos={product}  /> </Grid>;})
     return (
-        <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {roots}   
+        <div className="">
+            <Grid container spacing={3}>
+                {roots}  
+            </Grid>
         </div>
         )
     }
