@@ -2,8 +2,9 @@ import React from "react";
 import {
     Link
   } from "react-router-dom";
+import "../css/HeaderGeneral.css"
 
-function HeaderCom(props) {
+function HeaderGeneral(props) {
     const col = props.colorT;
     const imgUrl = props.imagen;
 
@@ -19,14 +20,17 @@ function HeaderCom(props) {
     }
     return (
     <>
-        <header className="h-96 bg-blue-200" style={divStyle}>
-            <div className="flex flex-col items-center w-full sm:w-3/5 lg:w-1/2">
+        <header className="headerGeneral" style={divStyle}>
+            <div>
                 <h2 className="text-center mt-40 mb-10 sm:mb-20 ml-5 inline-block text-2xl sm:text-4xl lg:text-5xl font-mono " > {props.mensaje}</h2>
-                <Link to="/about" style={buttonStyle} className="w-auto border-2 border-red-600 bg-transparent hover:bg-red-600 hover:bg-red-600 p-3 rounded-2xl text-red-600 hover:text-white text-xl font-black">Sing in</Link>
+                <div className="containerButton">
+                    <Link to="/SignIn" style={buttonStyle} className="button">Sign in</Link>
+                    <Link to="/LogIn" style={buttonStyle} className="button">Login</Link>
+                </div>
             </div>
         </header>
     </>
     );
   }
 
-export default HeaderCom;
+export default HeaderGeneral;
