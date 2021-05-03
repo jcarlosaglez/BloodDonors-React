@@ -93,7 +93,7 @@ export default function ButtonAppBar() {
           >
             <StyledMenuItem component={RouterLink} to="/">
               <ListItemIcon>
-                <HomeIcon color="secundary" />
+                <HomeIcon color="secondary" />
               </ListItemIcon>
               <ListItemText primary="Home" />
             </StyledMenuItem>

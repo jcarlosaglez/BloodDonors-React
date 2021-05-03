@@ -1,5 +1,29 @@
 import React, {useState} from 'react';
 
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline"
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import InputLabel from '@material-ui/core/InputLabel';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 import "../css/Form.css";
 // import InputOfText from "./InputOfText";
 
@@ -17,12 +41,30 @@ function Signin() {
         "place_of_residence": "",
         "password":""        
     })
+    const [birthday, setBirthday] = React.useState(new Date());
+    const[showPassword, setShowPassword] = React.useState(false);
     const handleInputChange = (event) => {
         setDatos({
             ...datos,
             [event.target.name] : event.target.value
         })
     }
+    const handleDateChange = (date) => {
+        setBirthday(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+    };
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    React.useEffect(()=> {
+        const defaultDate = new Date(2000, 0, 1);
+        setBirthday(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()}`);
+    }, [])
+
+    React.useEffect(() => {
+        datos.birthday = birthday;
+    }, [birthday])
+
     const goToBackend = (config, data) => {
         return fetch(config.url, {
           method: config.method,
@@ -52,157 +94,186 @@ function Signin() {
             console.error(error);
         }
     }
+
+    const useStyles = makeStyles((theme) => ({
+        paper: {
+            marginTop: theme.spacing(8),
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
+        form: {
+            width: '100%', // Fix IE 11 issue.
+            marginTop: theme.spacing(3),
+        },
+        submit: {
+            margin: theme.spacing(3, 0, 2),
+        },
+        verticalAlign: {
+            alignSelf: "center",
+        }
+    }));
+
+    const classes = useStyles();
+
     return (
         <>
-            <div>
-                <form onSubmit={enviarDatos}>
-                <div className="">
-                        <h1 className="">Registro de receptor</h1>
+            <Container component="main" maxWidth="sm">
+                <CssBaseline />
+                <div className={classes.paper}>
+                    <Typography component="h1" variant="h5">
+                        Registro de receptor
+                    </Typography>
+                    <form 
+                        className={classes.form}
+                        onSubmit={enviarDatos}
+                    >
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoComplete="curp"
+                                    name="curp"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="curp"
+                                    label="CURP"
+                                    autoFocus
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
 
-                        <div className="">
-                            <div className="">
-                                <div className="">
-                                    <label htmlFor="curp" className="">
-                                        Curp:
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="curp"
-                                        id="curp"
-                                        className=""
-                                        placeholder="XXXX000000XXXXXX00"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    autoComplete="first_name"
+                                    name="first_name"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="first_name"
+                                    label="Nombre(s)"
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
 
-                                <div className="">
-                                    <label htmlFor="first_name" className="">
-                                        Nombre(s):
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="first_name"
-                                        id="first_name"
-                                        autoComplete="first_name"
-                                        className=""
-                                        placeholder="Carlos"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    autoComplete="last_name"
+                                    name="last_name"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="last_name"
+                                    label="Apellidos"
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="last_name" className="">
-                                        Apellidos:
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="last_name"
-                                        id="last_name"
-                                        className=""
-                                        placeholder="Perez"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-
-                                <div className="">
-                                    <label htmlFor="birthday" className="">
-                                        Fecha de nacimiento:
-                                    </label>
-                                    <input
-                                        type="date"
+                            <Grid className={classes.verticalAlign} item md={6} xs={12}>
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <KeyboardDatePicker
+                                        fullWidth
+                                        variant="inline"
                                         name="birthday"
+                                        format="dd/MM/yyyy"
+                                        margin="normal"
                                         id="birthday"
-                                        className=""
-                                        onChange={handleInputChange}
+                                        label="Fecha de nacimiento:"
+                                        value={birthday}
+                                        onChange={handleDateChange}
                                     />
-                                </div>
+                                </MuiPickersUtilsProvider>
+                            </Grid>
 
-                                <div className="">
-                                    <label htmlFor="" className="">
-                                        Genero:
-                                    </label>
+                            <Grid item md={6} xs={12}>
+                                <FormControl component="fieldset">
+                                    <FormLabel component="legend">Genero</FormLabel>
+                                    <RadioGroup name="gender" onChange={handleInputChange}>
+                                        <FormControlLabel value="female" control={<Radio />} label="Mujer" />
+                                        <FormControlLabel value="male" control={<Radio />} label="Hombre" />
+                                        <FormControlLabel value="non-binary" control={<Radio />} label="No Binario" />
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
+                            
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoComplete="email"
+                                    name="email"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Correo"
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
 
-                                    <div className="">
-                                        <input className="" type="radio" id="male" value="male" name="gender" onChange={handleInputChange}/>
-                                        <label className="">Hombre</label>
-
-                                        <input className="" type="radio" id="female" value="female" name="gender" onChange={handleInputChange}/>
-                                        <label className="" htmlFor="female">Mujer</label>
-                                        
-                                        <input className="" type="radio" id="non-binary" value="non-binary" name="gender" onChange={handleInputChange}/>
-                                        <label className="" htmlFor="non-binary">No Binario</label>
-                                    </div>
-                                </div>
-                                
-                                <div className="">
-                                    <label htmlFor="email" className="">
-                                        Correo:
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="email"
-                                        autoComplete="email"
-                                        className=""
-                                        placeholder="correo@dominio.com"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-
-                                <div className="">
-                                    <label htmlFor="password" className="">
-                                        Contraseña:
-                                    </label>
-                                    <input
-                                        type="password"
-                                        name="password"
+                            <Grid item xs={12}>
+                                <FormControl fullWidth variant="outlined">
+                                    <InputLabel htmlFor="password">Password</InputLabel>
+                                    <OutlinedInput
+                                        autoComplete="password"
                                         id="password"
-                                        className=""
+                                        name="password"
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={datos.password}
                                         onChange={handleInputChange}
+                                        endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                // onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                        }
+                                        labelWidth={72}
                                     />
-                                </div>
+                                </FormControl>
+                            </Grid>
 
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="phone_number" className="">
-                                        Telefono:
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        name="phone_number"
-                                        id="phone_number"
-                                        className=""
-                                        placeholder="0000000000"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoComplete="phone_number"
+                                    name="phone_number"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="phone_number"
+                                    label="Telefono:"
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
 
-                                <div className="">
-                                    <label htmlFor="place_of_residence" className="">
-                                        Lugar de residencia:
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="place_of_residence"
-                                        id="place_of_residence"
-                                        className=""
-                                        placeholder="ciudad - codigo postal"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="">
-                            <button
-                                type="submit"
-                                className=""
-                            >
-                            Registro
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoComplete="place_of_residence"
+                                    name="place_of_residence"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="place_of_residence"
+                                    label="Lugar de residencia"
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
+                        </Grid>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Registrarme
+                        </Button>
+                    </form>
+                </div>
+            </Container>
         </>
     );
 }
