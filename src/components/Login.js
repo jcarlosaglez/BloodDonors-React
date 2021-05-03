@@ -82,9 +82,10 @@ function SignIn() {
 			if(!response.ok){
 				console.log(response)	
 			}
-			const todo = await response.json().parse();
+			const todo = await response.json();
 			console.log("data", todo, response, data);
 		} catch (error) {
+			console.log("OOOh no");
 			console.error(error);
 		}
 
