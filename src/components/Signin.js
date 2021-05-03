@@ -23,6 +23,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Link from '@material-ui/core/Link';
 
 import "../css/Form.css";
 // import InputOfText from "./InputOfText";
@@ -43,6 +44,8 @@ function Signin() {
     })
     const [birthday, setBirthday] = React.useState(new Date());
     const[showPassword, setShowPassword] = React.useState(false);
+    const [errors, setErrors] = React.useState({
+    });
     const handleInputChange = (event) => {
         setDatos({
             ...datos,
@@ -139,6 +142,8 @@ function Signin() {
                                     id="curp"
                                     label="CURP"
                                     autoFocus
+                                    error={!!errors.curp}
+                                    helperText={errors.curp}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -161,7 +166,6 @@ function Signin() {
                                     autoComplete="last_name"
                                     name="last_name"
                                     variant="outlined"
-                                    required
                                     fullWidth
                                     id="last_name"
                                     label="Apellidos"
@@ -172,6 +176,7 @@ function Signin() {
                             <Grid className={classes.verticalAlign} item md={6} xs={12}>
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <KeyboardDatePicker
+                                        required
                                         fullWidth
                                         variant="inline"
                                         name="birthday"
@@ -186,12 +191,30 @@ function Signin() {
                             </Grid>
 
                             <Grid item md={6} xs={12}>
-                                <FormControl component="fieldset">
+                                <FormControl
+                                    required
+                                    component="fieldset"
+                                >
                                     <FormLabel component="legend">Genero</FormLabel>
-                                    <RadioGroup name="gender" onChange={handleInputChange}>
-                                        <FormControlLabel value="female" control={<Radio />} label="Mujer" />
-                                        <FormControlLabel value="male" control={<Radio />} label="Hombre" />
-                                        <FormControlLabel value="non-binary" control={<Radio />} label="No Binario" />
+                                    <RadioGroup
+                                        name="gender"
+                                        onChange={handleInputChange}
+                                    >
+                                        <FormControlLabel
+                                            value="female"
+                                            control={<Radio />}
+                                            label="Mujer" /
+                                        >
+                                        <FormControlLabel
+                                            value="male"
+                                            control={<Radio />}
+                                            label="Hombre" /
+                                        >
+                                        <FormControlLabel
+                                            value="non-binary"
+                                            control={<Radio />}
+                                            label="No Binario" /
+                                        >
                                     </RadioGroup>
                                 </FormControl>
                             </Grid>
@@ -210,8 +233,8 @@ function Signin() {
                             </Grid>
 
                             <Grid item xs={12}>
-                                <FormControl fullWidth variant="outlined">
-                                    <InputLabel htmlFor="password">Password</InputLabel>
+                                <FormControl required fullWidth variant="outlined">
+                                    <InputLabel htmlFor="password">Contraseña</InputLabel>
                                     <OutlinedInput
                                         autoComplete="password"
                                         id="password"
@@ -231,7 +254,7 @@ function Signin() {
                                             </IconButton>
                                         </InputAdornment>
                                         }
-                                        labelWidth={72}
+                                        labelWidth={83}
                                     />
                                 </FormControl>
                             </Grid>
@@ -241,7 +264,6 @@ function Signin() {
                                     autoComplete="phone_number"
                                     name="phone_number"
                                     variant="outlined"
-                                    required
                                     fullWidth
                                     id="phone_number"
                                     label="Telefono:"
@@ -271,6 +293,18 @@ function Signin() {
                         >
                             Registrarme
                         </Button>
+                        <Grid container alignItems="flex-end" direction="column">
+                            <Grid item>
+                                <Link href="#" variant="body1">
+                                    Registrate como Donador
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="#" variant="body1">
+                                    ¿Ya tienes una cuenta? Inicia sesión aquí
+                                </Link>
+                            </Grid>
+                        </Grid>
                     </form>
                 </div>
             </Container>
