@@ -16,12 +16,14 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
-
+const cardStyle = {
+  margin: "20px 10px"
+}
 function CardHero(props) {
     const classes = useStyles();
 
     return (
-      <Card className={classes.root}>
+      <Card className={classes.root} style={cardStyle}>
         <CardActionArea>
           <CardMedia
             className={classes.media}

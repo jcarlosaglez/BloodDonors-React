@@ -1,0 +1,66 @@
+.containerFlex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid gray;
+    box-shadow: 2px 2px 2px gray;
+    border-radius: 5px;
+    margin: 50px 15px;
+}
+.InfoText{
+    padding: 5%;
+}
+.InfoText > h2{
+    text-align: center;
+}
+.InfoText > hr{
+    margin: 20px 0;
+}
+.InfoText > p{
+    text-align: justify;
+}
+.InfoImg{
+    border-radius: 15px;
+}
+.InfoImg > img{
+    width: 90%;
+    margin: 5%;
+    border-radius: 15px;
+}
+
+@media (min-width: 576px) { 
+    .InfoText > h2{
+        font-size: 30px;
+    }
+    .InfoText > p{
+        font-size: 18px;
+    }
+ }
+
+@media (min-width: 768px) { 
+    .flex{
+        flex-direction: row;
+    }
+    .flexReverse{
+        flex-direction: row-reverse;
+    }
+    .InfoText, .InfoImg{
+        width: 45%;
+    }
+    .InfoImg > img{
+        height: 100%;
+    }
+
+ }
+
+@media (min-width: 992px) { 
+    .InfoText > h2{
+        font-size: 40px;
+    }
+    .InfoText > p{
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {  }
