@@ -14,6 +14,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Switch from '@material-ui/core/Switch';
+import Snackbar from '@material-ui/core/Snackbar';
+import ErrorIcon from '@material-ui/icons/ErrorOutlineOutlined';
+
 
 function Copyright() {
 	return (
@@ -46,6 +49,15 @@ const useStyles = makeStyles((theme) => ({
 	submit: {
 		margin: theme.spacing(3, 0, 2),
 	},
+	alertError: {
+		backgroundColor: "#f44336",
+		padding: "0.5em 1em",
+		borderRadius: "4px",
+		color: "white",
+		fontWeight: 500,
+		display: "flex",
+		alignItems: "center"
+	}
 }));
 
 function SignIn() {
@@ -54,6 +66,7 @@ function SignIn() {
 		password: "",
 	});
 	const [isDonor, setIsDonor] = React.useState(true);
+	const [error, setError] = React.useState(false);
 	const handleInpChange = (event) => {
 		setData({
 			...data,
@@ -83,6 +96,7 @@ function SignIn() {
 			const response = await goToBackend(config, data);
 			if (!response.ok) {
 				console.log(response);
+				setError(true);
 			}
 			const todo = await response.json();
 			console.log("data", todo, response, data);
@@ -90,6 +104,10 @@ function SignIn() {
 			console.log("OOOh no");
 			console.error(error);
 		}
+	};
+
+	const handleClose = () => {
+		setError(false);
 	};
 
 	const classes = useStyles();
@@ -173,6 +191,14 @@ function SignIn() {
 			<Box mt={8}>
 				<Copyright />
 			</Box>
+			<Snackbar
+				children={<div className={classes.alertError}><ErrorIcon /><p>El correo y contraseña no coinciden</p></div>}
+				anchorOrigin={{ vertical: "bottom", horizontal: "center"}}
+				open={error}
+				autoHideDuration={5000}
+				onClose={handleClose}
+				key={"bottom" + "center"}
+			/>
 		</Container>
 	);
 }
