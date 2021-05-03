@@ -76,7 +76,7 @@ function Signin() {
         })
     }
     
-    const enviarDatos = async (event) => {
+    const sendData = async (event) => {
         event.preventDefault()
 
         //Servidor
@@ -126,7 +126,7 @@ function Signin() {
                     </Typography>
                     <form 
                         className={classes.form}
-                        onSubmit={enviarDatos}
+                        onSubmit={sendData}
                     >
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
