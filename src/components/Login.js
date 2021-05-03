@@ -64,8 +64,9 @@ function SignIn() {
           method: config.method,
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
-          }
+            "Accept": "application/json",
+          },
+	  body: JSON.stringify(data)
         })
     }	
 	const sendData = async (event) => {
@@ -75,7 +76,7 @@ function SignIn() {
 		//Servidor
 		const config = {
 			url: "https://blood-donors-v1.herokuapp.com/v1/receivers/login ",
-			method: "GET"
+			method: "POST",
 		};
 		try {
 			const response = await goToBackend(config, data);
