@@ -24,6 +24,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Link from '@material-ui/core/Link';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 import "../css/Form.css";
 // import InputOfText from "./InputOfText";
@@ -44,8 +45,7 @@ function Signin() {
     })
     const [birthday, setBirthday] = React.useState(new Date());
     const[showPassword, setShowPassword] = React.useState(false);
-    const [errors, setErrors] = React.useState({
-    });
+    const [errors, setErrors] = React.useState({});
     const handleInputChange = (event) => {
         setDatos({
             ...datos,
@@ -69,34 +69,38 @@ function Signin() {
     }, [birthday])
 
     const goToBackend = (config, data) => {
-        return fetch(config.url, {
-          method: config.method,
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(data)
-        })
-    }
-    
-    const sendData = async (event) => {
-        event.preventDefault()
+		return fetch(config.url, {
+			method: config.method,
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+			},
+			body: JSON.stringify(data),
+		});
+	};
+	const sendData = async (event) => {
+		event.preventDefault();
 
-        //Servidor
-        const config ={
-            url: URL,
-            method: "POST"
-        };
-        try {
-            const response = await goToBackend(config, data);
-            if (!response.ok) /* throw new Error("Response not ok", response); */console.log(response);
-            const todo = await response.json();
-            setData(todo);
-            console.log("data", data, datos, response);
-        } catch (error) {
-            console.error(error);
-        }
-    }
+		//Servidor
+		const config = {
+			url: "https://blood-donors-v1.herokuapp.com/v1/receivers/",
+			method: "POST",
+		};
+		try {
+			const response = await goToBackend(config, datos);
+			if (!response.ok) {
+                const errorss = await response.json();
+				setErrors({...errorss.errors});
+                return;
+			}
+			const user = await response.json();
+            setErrors({});
+            setData(user);
+		} catch (error) {
+			console.log("OOOh no");
+			// console.error(error);
+		}
+	};
 
     const useStyles = makeStyles((theme) => ({
         paper: {
@@ -157,6 +161,8 @@ function Signin() {
                                     fullWidth
                                     id="first_name"
                                     label="Nombre(s)"
+                                    error={!!errors.first_name}
+                                    helperText={errors.first_name}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -169,6 +175,8 @@ function Signin() {
                                     fullWidth
                                     id="last_name"
                                     label="Apellidos"
+                                    error={!!errors.last_name}
+                                    helperText={errors.last_name}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -185,6 +193,8 @@ function Signin() {
                                         id="birthday"
                                         label="Fecha de nacimiento:"
                                         value={birthday}
+                                        error={!!errors.birthday}
+                                        helperText={errors.birthday}
                                         onChange={handleDateChange}
                                     />
                                 </MuiPickersUtilsProvider>
@@ -228,12 +238,19 @@ function Signin() {
                                     fullWidth
                                     id="email"
                                     label="Correo"
+                                    error={!!errors.email}
+                                    helperText={errors.email}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
 
                             <Grid item xs={12}>
-                                <FormControl required fullWidth variant="outlined">
+                                <FormControl
+                                    required
+                                    fullWidth
+                                    variant="outlined"
+                                    error={!!errors.password}
+                                >
                                     <InputLabel htmlFor="password">Contraseña</InputLabel>
                                     <OutlinedInput
                                         autoComplete="password"
@@ -256,6 +273,7 @@ function Signin() {
                                         }
                                         labelWidth={83}
                                     />
+                                    <FormHelperText>{errors.password}</FormHelperText>
                                 </FormControl>
                             </Grid>
 
@@ -295,8 +313,8 @@ function Signin() {
                         </Button>
                         <Grid container alignItems="flex-end" direction="column">
                             <Grid item>
-                                <Link href="#" variant="body1">
-                                    Registrate como Donador
+                                <Link href="SignInDonor" variant="body1">
+                                    ¿Quieres ser un donador? Registrate aquí
                                 </Link>
                             </Grid>
                             <Grid item>
