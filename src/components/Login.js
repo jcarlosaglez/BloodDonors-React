@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -47,9 +47,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
-  const classes = useStyles();
 
+function SignIn() {
+  const [data, setData] = useState({
+		"email": "",
+		"password": "",
+  })
+  const handleInpChange = (event) => {
+  	setData({
+			...data,
+			[event.target.name] : event.target.value
+		})
+  }
+    const goToBackend = (config, data) => {
+        return fetch(config.url, {
+          method: config.method,
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+	  body: JSON.stringify(data)
+        })
+    }	
+	const sendData = async (event) => {
+		event.preventDefault();
+		console.log(data);
+
+		//Servidor
+		const config = {
+			url: "https://blood-donors-v1.herokuapp.com/v1/receivers/login ",
+			method: "POST",
+		};
+		try {
+			const response = await goToBackend(config, data);
+			if(!response.ok){
+				console.log(response)	
+			}
+			const todo = await response.json();
+			console.log("data", todo, response, data);
+		} catch (error) {
+			console.log("OOOh no");
+			console.error(error);
+		}
+
+	}
+
+	
+  const classes = useStyles();
+	
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -60,7 +105,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={sendData}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -71,6 +116,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleInpChange}
           />
           <TextField
             variant="outlined"
@@ -82,6 +128,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+					  onChange={handleInpChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -93,7 +140,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-          >
+					>
             Sign In
           </Button>
           <Grid container>
@@ -116,3 +163,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default SignIn;
