@@ -1,73 +1,118 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
-function Login() {
-
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
-
-
-
-    // Estado de inputs
-
-    return (
-        <div className="mt-28 md:mt-16 md:w-3/12 sm:w-full mx-auto">
-            <div className="mt-5 md:mt-0 md:col-span-2">
-                <form action="#" method="POST">
-                    <div className="shadow overflow-hidden sm:rounded-md border">
-                        <h1 className="mt-5 text-center text-2xl text-gray-700">Iniciar sesión</h1>
-
-                        <div className="px-4 py-5 bg-white sm:p-6">
-                            <div className="">
-                                <div className="w-full mx-auto">
-                                    <label htmlFor="email_address" className="block text-sm font-medium text-gray-700">
-                                        Correo:
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="email_address"
-                                        id="email_address"
-                                        autoComplete="email"
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        value={email}
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                        placeholder="correo@dominio.com"
-                                    />
-                                </div>
-
-                                <div className="w-full mx-auto mt-3">
-                                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                        Contraseña:
-                                    </label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        id="password"
-                                        autoComplete="email"
-                                        value={password}
-                                        className="mt-1 p-1.5 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                            <button
-                                type="submit"
-                                className="w-full md:w-auto inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                            >
-                            Iniciar sesión
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div className="mt-3 text-center">
-                <Link to="/Signin">Registrate aquí</Link>
-            </div>
-        </div>
-    );
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" component={RouterLink} to="/">
+        BloorDonor
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-export default Login;
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function SignIn() {
+  const classes = useStyles();
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Olvidaste tu contraseña?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link component={RouterLink} to="/SignIn">
+                {"¿No tienes cuenta? Registrate"}
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
+}

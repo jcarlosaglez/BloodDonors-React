@@ -1,0 +1,10 @@
+.ContainerTitle{
+    margin: 100px 10px;
+    border-top: 5px solid grey;
+    border-bottom: 5px solid grey;
+}
+.TitleSection{
+    font-size: 50px;
+    text-align: center;
+    color: rgb(65, 65, 65);
+}

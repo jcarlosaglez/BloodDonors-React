@@ -12,6 +12,7 @@ import SigninDonor from './SigninDonor.js';
 import Login from './Login';
 import DonorsList from "./DonorsList";
 import Donor from "./Donor";
+import PanelUser from './PanelUser';
 
 import ButtonAppBar from "./MaterialNavBar";
 
@@ -56,6 +57,9 @@ export default function App() {
           </Route>
           <Route path="/donors">
             <DonorsList />
+          </Route>
+          <Route path="/panelUser">
+            <PanelUser />
           </Route>
           <Route path="/SignIn">
             <Signin />

@@ -85,11 +85,11 @@ function Signin() {
             method: "POST"
         };
         try {
-            const response = await goToBackend(config, datos);
+            const response = await goToBackend(config, data);
             if (!response.ok) /* throw new Error("Response not ok", response); */console.log(response);
             const todo = await response.json();
             setData(todo);
-            console.log("data", data, response);
+            console.log("data", data, datos, response);
         } catch (error) {
             console.error(error);
         }

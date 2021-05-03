@@ -2,7 +2,7 @@ import React from "react";
 import HeaderGeneral from "./HeaderGeneral";
 import SectionOfTitle from "./SectionOfTitle";
 import Container from "./Container";
-import BigInf from "./BigInf";
+import BigInf from "./CardUniqInf";
 import SectionBGTransparent from "./SectionBGTransparent";
 import DataCard from "../assets/data/datosCards";
 import DataInf from "../assets/data/datosGrande";
