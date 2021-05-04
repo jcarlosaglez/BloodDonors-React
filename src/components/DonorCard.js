@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "../css/DonorCard.css"
+import PropTypes from 'prop-types';
 
 const DonorCard = (props) => 
     <div className="donor-card">
@@ -13,4 +14,7 @@ const DonorCard = (props) =>
         </div>
     </div>
 
+DonorCard.propTypes = {
+ donor: PropTypes.array.isRequired
+}
 export default DonorCard;
