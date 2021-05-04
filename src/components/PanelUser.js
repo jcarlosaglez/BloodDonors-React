@@ -1,5 +1,5 @@
 import React from 'react';
-import Donor from './DonorsList';
+import SearchDonors from './SearchDonors';
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -159,7 +159,7 @@ function PanelUser() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Donor />
+        <SearchDonors />
       </main>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import "../css/DonorsList.css";
 import DonorCard from "./DonorCard";
 
-const DonorsList = () =>{
+const DonorsList = (props) =>{
     const [donors, setDonors] = React.useState([]);
 
     React.useEffect(() => {
