@@ -10,6 +10,7 @@ import Information from './Information.js';
 import Signin from './Signin';
 import SigninDonor from './SigninDonor.js';
 import Login from './Login';
+import Footer from "./Footer";
 import DonorsList from "./DonorsList";
 import Donor from "./Donor";
 import PanelUser from './PanelUser';
@@ -77,6 +78,7 @@ export default function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
