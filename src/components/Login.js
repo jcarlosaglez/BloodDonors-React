@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import useLocalStorage from "./useLocalStorage";
+import Redirect from "react-router-dom/Redirect"
 import { Link as RouterLink } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -65,6 +67,7 @@ function SignIn() {
 		email: "",
 		password: "",
 	});
+	const [myUser, setMyUser] = useLocalStorage("localUser");
 	const [isDonor, setIsDonor] = React.useState(true);
 	const [error, setError] = React.useState(false);
 	const handleInpChange = (event) => {
@@ -98,8 +101,8 @@ function SignIn() {
 				console.log(response);
 				setError(true);
 			}
-			const todo = await response.json();
-			console.log("data", todo, response, data);
+			const user = await response.json();
+			setMyUser(user)
 		} catch (error) {
 			console.log("OOOh no");
 			console.error(error);
@@ -114,6 +117,7 @@ function SignIn() {
 
 	return (
 		<Container component="main" maxWidth="xs">
+			{myUser ? <Redirect to="/panelUser" /> : ""}
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}>

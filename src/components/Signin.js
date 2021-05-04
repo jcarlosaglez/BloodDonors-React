@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import useLocalStorage from "./useLocalStorage";
+import Redirect from "react-router-dom/Redirect";
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -45,6 +47,7 @@ function Signin() {
     })
     const [birthday, setBirthday] = React.useState(new Date());
     const[showPassword, setShowPassword] = React.useState(false);
+	const [myUser, setMyUser] = useLocalStorage("localUser");
     const [errors, setErrors] = React.useState({});
     const handleInputChange = (event) => {
         setDatos({
@@ -126,6 +129,7 @@ function Signin() {
     return (
         <>
             <Container component="main" maxWidth="sm">
+			    {myUser ? <Redirect to="/panelUser" /> : ""}
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Typography component="h1" variant="h5">
