@@ -64,7 +64,7 @@ const StyledMenuItem = withStyles((theme) => ({
 export default function ButtonAppBar() {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
-	const [myUser, setMyUser] = useLocalStorage("localUser");
+	const [token, setToken] = useLocalStorage("localToken");
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -74,7 +74,7 @@ export default function ButtonAppBar() {
 		setAnchorEl(null);
 	};
 	let button;
-	if(myUser) {
+	if(token !== "null") {
 		button = <Button color="inherit" component={RouterLink} to="/panelUser">
 					Perfil
 				</Button>
@@ -126,13 +126,6 @@ export default function ButtonAppBar() {
 					<Typography variant="h6" className={classes.title}>
 						BloodDonorAPP
 					</Typography>
-					{/* <Container className="navBarDesk">
-                <Grid container justify="center">
-                    <Button color="inherit" component={RouterLink} to="/">HOME</Button>
-                    <Button color="inherit" component={RouterLink} to="/Inf">Información General</Button>
-                    <Button color="inherit" component={RouterLink} to="/About">Acerca de nosotros</Button>
-                </Grid>
-            </Container> */}
 					{button}
 				</Toolbar>
 			</AppBar>

@@ -2,6 +2,7 @@ import React from "react";
 import Donor from "./DonorsList";
 import useLocalStorage from "./useLocalStorage";
 import Redirect from "react-router-dom/Redirect";
+import Button from "@material-ui/core/Button";
 
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -83,13 +84,16 @@ const useStyles = makeStyles((theme) => ({
 		}),
 		marginLeft: 0,
 	},
+    title: {
+        flexGrow: 1,
+    }
 }));
 
 function PanelUser() {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
-	const [myUser, setMyUser] = useLocalStorage("localUser");
+	const [token, setToken] = useLocalStorage("localToken");
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -99,9 +103,13 @@ function PanelUser() {
 		setOpen(false);
 	};
 
+    const logOut = () => {
+        setToken("null");
+    }
+
 	return (
 		<div className={classes.root}>
-			{!myUser ? <Redirect to="/LogIn" /> : ""}
+			{token === "null" ? <Redirect to="/LogIn" /> : ""}
 			<CssBaseline />
 			<AppBar
 				position="fixed"
@@ -122,9 +130,18 @@ function PanelUser() {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h6" noWrap>
+					<Typography className={classes.title} variant="h6" noWrap>
 						Panel de usuario
 					</Typography>
+					<Button
+						aria-controls="customized-menu"
+						aria-haspopup="true"
+						variant="contained"
+						color="primary"
+                        onClick={() => logOut()}
+					>
+						Cerrar sesión
+					</Button>
 				</Toolbar>
 			</AppBar>
 			<Drawer

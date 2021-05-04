@@ -53,7 +53,7 @@ function SigninDonor() {
     const [birthday, setBirthday] = React.useState(new Date());
     const[showPassword, setShowPassword] = React.useState(false);
     const [formAnswers, setFormAnswers] = React.useState({});
-	const [myUser, setMyUser] = useLocalStorage("localUser");
+	const [token, setToken] = useLocalStorage("localToken");
     const [errors, setErrors] = React.useState({
     });
     const handleInputChange = (event) => {
@@ -117,7 +117,7 @@ function SigninDonor() {
 			}
 			const user = await response.json();
             setErrors({});
-            setData(user);
+            setToken(user.user.token);
 		} catch (error) {
 			console.log("OOOh no");
 			// console.error(error);
@@ -152,7 +152,7 @@ function SigninDonor() {
     return (
         <>
             <Container component="main" maxWidth="sm">
-			    {myUser ? <Redirect to="/panelUser" /> : ""}
+			    {token !== "null" ? <Redirect to="/panelUser" /> : ""}
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Typography component="h1" variant="h5">
