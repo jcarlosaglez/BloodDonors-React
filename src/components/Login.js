@@ -97,15 +97,13 @@ function Login() {
 		try {
 			const response = await goToBackend(config, data);
 			if (!response.ok) {
-				console.log(response);
 				setError(true);
                 return;
 			}
 			const user = await response.json();
             setToken(user.user.token);
 		} catch (error) {
-			console.log("OOOh no");
-			console.error(error);
+			console.log(error);
 		}
 	};
 
@@ -201,7 +199,6 @@ function Login() {
 				open={error}
 				autoHideDuration={5000}
 				onClose={handleClose}
-				key={"bottom" + "center"}
 			/>
 		</Container>
 	);

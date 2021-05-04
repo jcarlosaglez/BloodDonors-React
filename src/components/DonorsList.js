@@ -16,7 +16,6 @@ const DonorsList = () =>{
                     }
                 });
                 const data = await response.json();
-                // console.log("completado:", data);
                 setDonors(data);
             }
             catch(e) {

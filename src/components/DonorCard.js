@@ -9,12 +9,11 @@ const DonorCard = (props) =>
         <p>Tipo de sangre: {props.donor.blood_type}</p>
         <p>Ubicación: {props.donor.place_of_residence}</p>
         <div className="flex">
-            <Link>Contactar</Link>
             <Link to={`/donors/${props.donor.id}`}>Mas información</Link>
         </div>
     </div>
 
 DonorCard.propTypes = {
- donor: PropTypes.array.isRequired
+    donor: PropTypes.object.isRequired
 }
 export default DonorCard;

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import "../css/Donor.css"
 
 const Donor = () =>{
@@ -17,7 +17,6 @@ const Donor = () =>{
                     }
                 });
                 const data = await response.json();
-                // console.log("completado:", data);
                 setDonor(data);
             }
             catch(e) {
@@ -25,7 +24,7 @@ const Donor = () =>{
             }
         }
         getData();
-    }, []);
+    });
 
     let gender = "";
 

@@ -32,11 +32,8 @@ import Divider from '@material-ui/core/Divider';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
 import "../css/Form.css";
-// import InputOfText from "./InputOfText";
 
-const URL = "https://blood-donors-v1.herokuapp.com/v1/donors/"
 function SigninDonor() {
-    const [data, setData] = React.useState({});
     const [datos, setDatos] = useState({        
         "curp": "",
         "first_name": "",
@@ -119,8 +116,7 @@ function SigninDonor() {
             setErrors({});
             setToken(user.user.token);
 		} catch (error) {
-			console.log("OOOh no");
-			// console.error(error);
+			console.error(error);
 		}
 	};
 
