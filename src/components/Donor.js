@@ -51,7 +51,7 @@ const Donor = () =>{
             <p>Genero: {gender}</p>
             <p>Tipo de sangre: {donor.blood_type}</p>
             <div className="flex">
-                <Link>Contactar</Link>
+                <a href={"mailto:" + donor.email}>Contactar</a>
             </div>
         </div>
     )

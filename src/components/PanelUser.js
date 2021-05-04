@@ -3,6 +3,7 @@ import Donor from "./DonorsList";
 import useLocalStorage from "./useLocalStorage";
 import Redirect from "react-router-dom/Redirect";
 import Button from "@material-ui/core/Button";
+import { Link as RouterLink } from "react-router-dom";
 
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -165,11 +166,11 @@ function PanelUser() {
 				<Divider />
 				<List>
 					{[
-						["Home", <HomeIcon />],
-						["Nosotros", <MailIcon />],
-						["Información", <DraftsIcon />],
+						["Home", <HomeIcon />,"/"],
+						["Nosotros", <MailIcon />, "/about"],
+						["Información", <DraftsIcon />, "/inf"],
 					].map((text, index) => (
-						<ListItem button key={text[1]}>
+						<ListItem button key={text[1]} component={RouterLink} to={text[2]}>
 							<ListItemIcon>{text[1]}</ListItemIcon>
 							<ListItemText primary={text[0]} />
 						</ListItem>
