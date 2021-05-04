@@ -3,10 +3,11 @@ import {
     Link
   } from "react-router-dom";
 import "../css/HeaderGeneral.css"
+import PropTypes from 'prop-types';
 
 function HeaderGeneral(props) {
     const col = props.colorT;
-    const imgUrl = props.imagen;
+    const imgUrl = props.image;
 
     const divStyle = {
         color: col,
@@ -22,7 +23,7 @@ function HeaderGeneral(props) {
     <>
         <header className="headerGeneral" style={divStyle}>
             <div>
-                <h2 className="text-center mt-40 mb-10 sm:mb-20 ml-5 inline-block text-2xl sm:text-4xl lg:text-5xl font-mono " > {props.mensaje}</h2>
+                <h2 className="" > {props.title}</h2>
                 <div className="containerButton">
                     <Link to="/SignIn" style={buttonStyle} className="button">Sign in</Link>
                     <Link to="/LogIn" style={buttonStyle} className="button">Login</Link>
@@ -32,5 +33,9 @@ function HeaderGeneral(props) {
     </>
     );
   }
-
+HeaderGeneral.protoType = {
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    colorT: PropTypes.string.isRequired,
+}
 export default HeaderGeneral;

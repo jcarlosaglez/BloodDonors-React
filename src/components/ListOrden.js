@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function ListOrden(props) {
     const data = props.data;
@@ -12,5 +13,7 @@ function ListOrden(props) {
         </div>
     )
 }
-
+ListOrden.propTypes = {
+    data: PropTypes.array.isRequired
+}
 export default ListOrden;

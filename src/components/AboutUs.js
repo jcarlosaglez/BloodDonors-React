@@ -5,10 +5,10 @@ function Nosotros() {
     return (
       <>
         <HeaderGeneral
-        mensaje="Somos un grupo de desarrolladores mexicanos"
+        title="Somos un grupo de desarrolladores mexicanos"
         colorT="white"
         buttonMos="none"
-        imagen="https://images.unsplash.com/photo-1544890225-2f3faec4cd60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=625&q=80"
+        image="https://images.unsplash.com/photo-1544890225-2f3faec4cd60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=625&q=80"
       />
       <div className="mx-20">
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus neque turpis, interdum eu dui ut, pharetra facilisis justo. Quisque ipsum dolor, venenatis non pharetra non, vulputate dapibus sapien. Vestibulum sed dui diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus eget arcu sit amet lectus tempus lobortis. Mauris semper imperdiet lorem ac vulputate. Cras consectetur varius augue fermentum tempus. Maecenas nunc nisi, molestie a vulputate at, tristique eu tellus. Suspendisse a massa blandit, interdum magna quis, congue lectus. Vestibulum et porta augue. Suspendisse finibus a velit vitae feugiat. Nullam lorem arcu, vehicula sed eros a, rhoncus elementum dui. Etiam eu erat id orci feugiat sodales et nec nisl. Fusce malesuada lectus lacus, vitae aliquam leo ultrices quis.  </p>
