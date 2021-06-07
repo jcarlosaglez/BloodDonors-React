@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/SectionOfTitle.css'
+import '../../css/SectionOfTitle.css'
 
 function SectionOfTitle(props) {
 
