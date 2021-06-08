@@ -10,13 +10,13 @@ function NavBarHome(){
 					<Link className="link linkHome" to="/">Home</Link>
 				</li>
 				<li>
-					<Link className="link linkHome" to="/inf/">Información</Link>
+					<Link className="link linkHome" to="/informacion/">Información</Link>
 				</li>
 				<li>
-					<Link className="link linkHome" to="/inf/requisitos">Requisitos</Link>
+					<Link className="link linkHome" to="/informacion/requisitos">Requisitos</Link>
 				</li>
 				<li>
-					<Link className="link linkHome" to="/inf/nosotros">Nosotros</Link>
+					<Link className="link linkHome" to="/informacion/nosotros">Nosotros</Link>
 				</li>
 			</ul>
 		</nav>

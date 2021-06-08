@@ -1,0 +1,7 @@
+.NavBarApp{
+    display: flex;
+    justify-content: space-between;
+}
+.active{
+    color: green;
+}
