@@ -13,7 +13,6 @@ export default function App() {
 				<div>
 					<MaterialNavBar />
 				</div>
-
 				<Routes />
 				<Footer />
 			</Router>

@@ -5,6 +5,7 @@ import useAuth from "./Auth/useAuth";
 import "../css/NavBarApp.css";
 
 import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 export default function NavBarApp() {
 	const [activ, useActiv] = useState(false);
@@ -27,12 +28,21 @@ export default function NavBarApp() {
 					<li><NavLink exact to="/informacion/nosotros" activeClassName="active"> Nosotros </NavLink></li>
 				</ul>
 				<div>
-					<button onClick={() => auth.login("1234")}>
-						Login
-					</button>
-					<button onClick={() => auth.logout()}>
-						Salir
-					</button>
+					{!auth.isLogged() && 
+						<>
+							<button onClick={() => auth.login("1234")}>
+								Login
+							</button>
+						</>
+					}
+					{auth.isLogged() && 
+						<>
+							<Link to="/paneluser/perfil"><AccountCircleIcon /></Link>
+							<button onClick={() => auth.logout()}>
+								Salir
+							</button>
+						</>
+					}
 				</div>
 			</nav>
 		</>
