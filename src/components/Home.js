@@ -2,6 +2,8 @@ import '../css/Home.css';
 import './NavBarHome';
 import NavBarHome from './NavBarHome';
 import useAuth from "./Auth/useAuth";
+import {Link} from "react-router-dom";
+import "../css/HeaderGeneral.css"
 
 const Home = () => {
 	const auth = useAuth();
@@ -12,15 +14,15 @@ const Home = () => {
 					Blood index
 				</h1>
 				{!auth.isLogged() && 
-					<>
-						<button>Iniciar sesión</button>
-						<button>Registrarse</button>
-					</>
+                	<div className="containerButton">
+						<Link to="/SignIn" className="button">Registrarse</Link>
+						<Link to="/LogIn" className="button">Iniciar sesión</Link>
+					</div>
 				}
 				{auth.isLogged() && 
-					<>
-						<button>Panel de control</button>
-					</>
+					<div className="containerButton">
+						<button className="button">Cerrar sesión</button>
+					</div>
 				}
 				<NavBarHome />
 			</div>

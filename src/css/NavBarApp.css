@@ -15,8 +15,10 @@
     position: fixed;
     top: 60px;
     left: 0;
+    margin-left: 20px;
     height: auto;
     background-color: antiquewhite;
+    text-align: center;
     
 }
 .NavBarApp ul li{

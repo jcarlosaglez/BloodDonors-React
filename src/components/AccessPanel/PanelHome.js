@@ -13,8 +13,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
+//CSS
 import "../../css/AccessPanel/PanelHome.css";
-
+//Components
+import ContactDonor from "./ContactDonor";
+import RequestDonor from './RequestDonor';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -136,10 +139,10 @@ const PanelHome = () => {
         </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            Item Two
+            <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            Item Three
+            <ContactDonor />
           </TabPanel>
         </SwipeableViews>
         {fabs.map((fab, index) => (
