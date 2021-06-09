@@ -5,7 +5,7 @@ const PublicRoutes = ({component: Component}, ...rest) => {
     const auth = useAuth();
 
     return(
-        <Route {...rest}>{!auth.isLogged() ? <Component /> : <Redirect to="/panel/user" />}</Route>
+        <Route {...rest}>{!auth.isLogged() ? <Component /> : <Redirect to="/panel" />}</Route>
     );
 }
 export default PublicRoutes;
