@@ -15,8 +15,8 @@ const Home = () => {
 				</h1>
 				{!auth.isLogged() && 
                 	<div className="containerButton">
-						<Link to="/SignIn" className="button">Registrarse</Link>
-						<Link to="/LogIn" className="button">Iniciar sesión</Link>
+						<Link to="/signin" className="button">Registrarse</Link>
+						<Link to="/login" className="button">Iniciar sesión</Link>
 					</div>
 				}
 				{auth.isLogged() && 

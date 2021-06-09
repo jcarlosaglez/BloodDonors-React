@@ -22,6 +22,8 @@ import Switch from '@material-ui/core/Switch';
 import Snackbar from '@material-ui/core/Snackbar';
 import ErrorIcon from '@material-ui/icons/ErrorOutlineOutlined';
 
+//Autenticación
+
 
 function Copyright() {
 	return (
@@ -120,7 +122,7 @@ function Login() {
 
 	return (
 		<Container component="main" maxWidth="xs">
-			{token !== "null" ? <Redirect to="/panelUser" /> : ""}
+			{auth.isLogged() ? <Redirect to="/panel" /> : ""}
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}>

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import useLocalStorage from "./useLocalStorage";
 import Redirect from "react-router-dom/Redirect";
 
 import Container from '@material-ui/core/Container';
@@ -31,6 +30,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
+//Autenticación
+import useAuth from "./Auth/useAuth";
+//Estilos css
 import "../css/Form.css";
 
 function SigninDonor() {
@@ -50,7 +52,6 @@ function SigninDonor() {
     const [birthday, setBirthday] = React.useState(new Date());
     const[showPassword, setShowPassword] = React.useState(false);
     const [formAnswers, setFormAnswers] = React.useState({});
-	const [token, setToken] = useLocalStorage("localToken");
     const [errors, setErrors] = React.useState({
     });
     const handleInputChange = (event) => {
@@ -114,7 +115,7 @@ function SigninDonor() {
 			}
 			const user = await response.json();
             setErrors({});
-            setToken(user.user.token);
+            auth.login(user.user.token);
 		} catch (error) {
 			console.error(error);
 		}
@@ -144,11 +145,11 @@ function SigninDonor() {
     }));
 
     const classes = useStyles();
-
+    const auth = useAuth();
     return (
         <>
             <Container component="main" maxWidth="sm">
-			    {token !== "null" ? <Redirect to="/panelUser" /> : ""}
+			    {auth.isLogged() ? <Redirect to="/panel" /> : ""}
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Typography component="h1" variant="h5">
