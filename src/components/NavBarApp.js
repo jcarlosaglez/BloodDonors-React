@@ -26,6 +26,9 @@ export default function NavBarApp() {
 					<li><NavLink exact to="/informacion" activeClassName="active"> Informacion </NavLink></li>
 					<li><NavLink exact to="/informacion/requisitos" activeClassName="active"> Requisitos </NavLink></li>
 					<li><NavLink exact to="/informacion/nosotros" activeClassName="active"> Nosotros </NavLink></li>
+					{auth.isLogged() && 
+						<li><NavLink to="/panel" activeClassName="active"> Panel de usuario </NavLink></li>
+					}
 				</ul>
 				<div>
 					{!auth.isLogged() && 
@@ -37,7 +40,7 @@ export default function NavBarApp() {
 					}
 					{auth.isLogged() && 
 						<>
-							<Link to="/paneluser/perfil"><AccountCircleIcon /></Link>
+							<Link to="/panel/user"><AccountCircleIcon /></Link>
 							<button onClick={() => auth.logout()}>
 								Salir
 							</button>

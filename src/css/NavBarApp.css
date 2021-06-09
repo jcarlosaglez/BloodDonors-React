@@ -1,11 +1,15 @@
 .NavBarApp{
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 60px;
     padding: 0 30px;
     background-color: antiquewhite;
+    z-index: 100;
 }
 .NavBarApp ul{
     position: fixed;
@@ -47,6 +51,9 @@
 @media (min-width: 1200px) { 
     .IconMenu{
         display: none;
+    }
+    .NavBarApp{
+        width: 100vw;
     }
     .NavBarApp ul{
         position: relative;

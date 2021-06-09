@@ -1,11 +1,11 @@
-import { useRouteMatch } from "react-router-dom";
-import React from "react";
+import React from "react"
+import PanelHome from "./AccessPanel/PanelHome";
 
-function AccessPanel() {
-    let { path } = useRouteMatch();
-
-	return (
-        <h1> {path} </h1>
-	);
+function AccessPanel() { 
+    return (
+      <div>
+        <PanelHome />
+      </div>
+    );
 }
 export default AccessPanel;

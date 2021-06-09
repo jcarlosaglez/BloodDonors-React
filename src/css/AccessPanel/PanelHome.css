@@ -1,0 +1,25 @@
+.arriba{
+    margin: auto;
+    margin-top: 60px;
+    width: 100%;
+}
+.PanelHome{
+    overflow: scroll;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.PanelHome div{
+    text-align: right;
+    color: tomato;
+}
+.PanelHome div h2{
+    font-size: 30px;
+}
+.PanelHome div h3{
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
