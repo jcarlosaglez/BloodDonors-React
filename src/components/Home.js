@@ -20,7 +20,7 @@ const Home = () => {
 					</div>
 				}
 				{auth.isLogged() && 
-					<div className="containerButton">
+					<div className="containerButton" onClick={() => auth.logout()}>
 						<button className="button">Cerrar sesión</button>
 					</div>
 				}

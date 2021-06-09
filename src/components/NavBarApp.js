@@ -40,7 +40,7 @@ export default function NavBarApp() {
 					}
 					{auth.isLogged() && 
 						<>
-							<Link to="/panel/user"><AccountCircleIcon /></Link>
+							<Link to="/panel"><AccountCircleIcon /></Link>
 							<button onClick={() => auth.logout()}>
 								Salir
 							</button>

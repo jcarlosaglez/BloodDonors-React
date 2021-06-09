@@ -110,7 +110,7 @@ function PanelUser() {
 
 	return (
 		<div className={classes.root}>
-			{token === "null" ? <Redirect to="/LogIn" /> : ""}
+			{token === "null" ? <Redirect to="/login" /> : ""}
 			<CssBaseline />
 			<AppBar
 				position="fixed"
