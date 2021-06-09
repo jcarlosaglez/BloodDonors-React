@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+// Autenticación
 import useLocalStorage from "./useLocalStorage";
-import {Redirect} from "react-router-dom"
+import useAuth from "./Auth/useAuth";
+
+import {Redirect} from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -63,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
+	const auth = useAuth();
 	const [data, setData] = useState({
 		email: "",
 		password: "",
@@ -101,6 +105,7 @@ function Login() {
                 return;
 			}
 			const user = await response.json();
+			auth.login(user.user.token);
             setToken(user.user.token);
 		} catch (error) {
 			console.log(error);

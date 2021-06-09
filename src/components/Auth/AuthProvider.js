@@ -1,16 +1,23 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({children}) =>{
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(
+        JSON.parse(localStorage.getItem("token")) || null
+    );
+
+    useEffect(() => {
+        localStorage.setItem("token", JSON.stringify(user))    
+    },[user])
 
     const contexValue = {
         user,
-        login() {
+        login(token) {
             setUser({
-                id:1, username: "luis50"
+                token
             })
+            console.log(user)
         },
         logout() {
             setUser(null);

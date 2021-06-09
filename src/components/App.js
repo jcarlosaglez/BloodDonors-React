@@ -3,7 +3,7 @@ import "../css/App.css";
 import AuthProvider from "./Auth/AuthProvider";
 
 import Routes from "./Routes/Routes";
-import MaterialNavBar from "./MaterialNavBar";
+import MaterialNavBar from "./NavBarApp";
 import Footer from "./Footer";
 
 export default function App() {
