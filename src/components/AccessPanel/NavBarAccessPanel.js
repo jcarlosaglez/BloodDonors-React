@@ -1,6 +1,5 @@
 import React from "react";
-import Donor from "./DonorsList";
-import useLocalStorage from "./useLocalStorage";
+import useLocalStorage from "../useLocalStorage";
 import Redirect from "react-router-dom/Redirect";
 import Button from "@material-ui/core/Button";
 import { Link as RouterLink } from "react-router-dom";
@@ -110,7 +109,7 @@ function PanelUser() {
 
 	return (
 		<div className={classes.root}>
-			{token === "null" ? <Redirect to="/login" /> : ""}
+			{token === "null" ? <Redirect to="/LogIn" /> : ""}
 			<CssBaseline />
 			<AppBar
 				position="fixed"
@@ -192,14 +191,6 @@ function PanelUser() {
 					))}
 				</List>
 			</Drawer>
-			<main
-				className={clsx(classes.content, {
-					[classes.contentShift]: open,
-				})}
-			>
-				<div className={classes.drawerHeader} />
-				<Donor />
-			</main>
 		</div>
 	);
 }

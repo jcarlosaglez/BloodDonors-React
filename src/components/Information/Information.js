@@ -2,8 +2,8 @@ import React from "react";
 import HeaderGeneral from "./HeaderGeneral";
 import SectionOfTitle from "./SectionOfTitle";
 import ListOrden from "./ListOrden";
-import requirements from "../assets/data/requirements";
-import recommen from "../assets/data/recommendations";
+import requirements from "../../assets/data/requirements";
+import recommen from "../../assets/data/recommendations";
 
 function Users() {
     const padding = {

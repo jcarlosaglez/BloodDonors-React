@@ -1,0 +1,70 @@
+.NavBarApp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 60px;
+    padding: 0 30px;
+    background-color: antiquewhite;
+    z-index: 100;
+}
+.NavBarApp ul{
+    position: fixed;
+    top: 60px;
+    left: 0;
+    margin-left: 20px;
+    height: auto;
+    background-color: antiquewhite;
+    text-align: center;
+    
+}
+.NavBarApp ul li{
+    margin: 10px 0;
+    display: inline-block;
+    width: 90%;
+}
+.nameApp, .NavBarApp ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+.active{
+    text-decoration: underline;
+    color: aqua;
+}
+.visible{
+    display: inline-block;
+}
+.hiden{    
+    display: none;
+    transition: 2s ease all;
+}
+@media (min-width: 768px) { 
+
+}
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .IconMenu{
+        display: none;
+    }
+    .NavBarApp{
+        width: 100vw;
+    }
+    .NavBarApp ul{
+        position: relative;
+        top: 0;
+        display: inline-block;
+    }
+    .NavBarApp ul li{
+        margin: 0 20px;
+        display: inline-block;
+        width: auto;
+    }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/SectionBGTransparent.css'
+import '../../css/SectionBGTransparent.css'
 
 function SectionBGTransparent(props) {
     const imgUrl = props.imagen;

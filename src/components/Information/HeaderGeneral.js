@@ -2,7 +2,7 @@ import React from "react";
 import {
     Link
   } from "react-router-dom";
-import "../css/HeaderGeneral.css"
+import "../../css/HeaderGeneral.css"
 import PropTypes from 'prop-types';
 
 function HeaderGeneral(props) {

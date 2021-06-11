@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+// Autenticación
 import useLocalStorage from "./useLocalStorage";
-import {Redirect} from "react-router-dom"
+import useAuth from "./Auth/useAuth";
+
+import {Redirect} from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -18,6 +21,8 @@ import Container from "@material-ui/core/Container";
 import Switch from '@material-ui/core/Switch';
 import Snackbar from '@material-ui/core/Snackbar';
 import ErrorIcon from '@material-ui/icons/ErrorOutlineOutlined';
+
+//Autenticación
 
 
 function Copyright() {
@@ -63,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
+	const auth = useAuth();
 	const [data, setData] = useState({
 		email: "",
 		password: "",
@@ -101,6 +107,7 @@ function Login() {
                 return;
 			}
 			const user = await response.json();
+			auth.login(user.user.token);
             setToken(user.user.token);
 		} catch (error) {
 			console.log(error);
@@ -115,7 +122,7 @@ function Login() {
 
 	return (
 		<Container component="main" maxWidth="xs">
-			{token !== "null" ? <Redirect to="/panelUser" /> : ""}
+			{auth.isLogged() ? <Redirect to="/panel" /> : ""}
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}>

@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/CardUniqInf.css'
+import '../../css/CardUniqInf.css'
 
 function CardUniqInf(props) {    
     return (
