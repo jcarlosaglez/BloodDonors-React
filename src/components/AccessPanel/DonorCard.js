@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "../css/DonorCard.css"
+import "../../css/DonorCard.css"
 import PropTypes from 'prop-types';
 
 const DonorCard = (props) => 
@@ -9,7 +9,7 @@ const DonorCard = (props) =>
         <p>Tipo de sangre: {props.donor.blood_type}</p>
         <p>Ubicación: {props.donor.place_of_residence}</p>
         <div className="flex">
-            <Link to={`/donors/${props.donor.id}`}>Mas información</Link>
+            <Link to={`/panel/contacto/id=${props.donor.id}`}>Mas información</Link>
         </div>
     </div>
 

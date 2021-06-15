@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/DonorsList.css";
+import "../../css/DonorsList.css";
 import DonorCard from "./DonorCard";
 
 const DonorsList = () =>{

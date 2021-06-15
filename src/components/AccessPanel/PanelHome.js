@@ -16,8 +16,8 @@ import Box from '@material-ui/core/Box';
 //CSS
 import "../../css/AccessPanel/PanelHome.css";
 //Components
-import ContactDonor from "./ContactDonor";
-import RequestDonor from './RequestDonor';
+import RequestDonor from "./RequestDonor";
+import User from './User';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -98,13 +98,13 @@ const PanelHome = () => {
       {
         color: 'secondary',
         className: classes.fab,
-        icon: <EditIcon />,
+        icon: <UpIcon />,
         label: 'Edit',
       },
       {
         color: 'inherit',
         className: clsx(classes.fab, classes.fabGreen),
-        icon: <UpIcon />,
+        icon: <EditIcon />,
         label: 'Expand',
       },
     ];
@@ -142,7 +142,7 @@ const PanelHome = () => {
             <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <ContactDonor />
+            <User />
           </TabPanel>
         </SwipeableViews>
         {fabs.map((fab, index) => (
