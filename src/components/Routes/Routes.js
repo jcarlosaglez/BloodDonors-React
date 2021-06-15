@@ -23,8 +23,8 @@ const Routes = () => {
     return(
     <Switch>
         <PrivateRoutes exact path="/panel/user" component={User} />
-        <PrivateRoutes exact path="panel/contacto" component={ContactDonor} />
-        <PrivateRoutes exact path="panel/solicitud" component={RequestDonor} />
+        <PrivateRoutes exact path="/panel/contacto/:id" component={ContactDonor} />
+        <PrivateRoutes exact path="/panel/solicitud" component={RequestDonor} />
         <PrivateRoutes exact path="/panel" component={AccessPanel} /> 
 
         <PublicRoutes exact path="/login" component={Login} />

@@ -6,7 +6,8 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-
+//Components
+import DonorsList from './DonorsList';
 //CSS
 import "../../css/AccessPanel/RequestDonor.css";
 
@@ -20,6 +21,7 @@ const RequestDonor = () => {
     const classes = useStyles();
     
     return (
+			<>
         <div className="formRequestDonor">
             <form >
             <FormControl className={classes.formControl}>
@@ -76,8 +78,8 @@ const RequestDonor = () => {
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="grouped-select">Hospital</InputLabel>
-                <Select defaultValue="" id="grouped-select">
+                <InputLabel htmlFor="grouped-hospital">Hospital</InputLabel>
+                <Select defaultValue="" id="grouped-hospital">
                 <MenuItem value="">
                     <em>None</em>
                 </MenuItem>
@@ -90,8 +92,8 @@ const RequestDonor = () => {
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="grouped-select">Tipo de sangre</InputLabel>
-                <Select defaultValue="" id="grouped-select">
+                <InputLabel htmlFor="grouped-blood">Tipo de sangre</InputLabel>
+                <Select defaultValue="" id="grouped-blood">
                 <MenuItem value="">
                     <em>No  importa</em>
                 </MenuItem>
@@ -105,7 +107,9 @@ const RequestDonor = () => {
                 Solicitar
             </Button>
             </form> 
-        </div>
+	        </div>
+					<DonorsList />
+			</>
     );
 }
 export default RequestDonor;

@@ -1,6 +1,13 @@
+import { useParams } from "react-router-dom";
+
 const ContactDonor = () => {
-    return(
-        <div></div>
+    let { id } = useParams();
+		return(
+      <div>
+					<h2>Hola que tal</h2>
+					<br />
+					<p>La vida {id}</p>
+			</div>
     )
 }
 export default ContactDonor;
