@@ -32,19 +32,16 @@ export default function NavBarApp() {
 				</ul>
 				<div>
 					{!auth.isLogged() && 
-						<>
-							<button onClick={() => auth.login("1234")}>
-								Login
-							</button>
-						</>
+                    	<div className="containerButton">
+							<Link to="/SignIn" className="button-nav">Sign in</Link>
+							<Link to="/LogIn" className="button-nav">Login</Link>
+						</div>
 					}
-					{auth.isLogged() && 
-						<>
+                	{auth.isLogged() && 
+						<div className="containerButton" onClick={() => auth.logout()}>
 							<Link to="/panel"><AccountCircleIcon /></Link>
-							<button onClick={() => auth.logout()}>
-								Salir
-							</button>
-						</>
+							<button className="button-nav">Cerrar sesión</button>
+						</div>
 					}
 				</div>
 			</nav>

@@ -7,6 +7,9 @@ import SectionBGTransparent from "./SectionBGTransparent";
 import DataCard from "../../assets/data/datosCards";
 import DataInf from "../../assets/data/datosGrande";
 
+//CSS
+import '../../css/Information/HomeInformation.css'
+
 function Home(props) {
     return (
     <>
@@ -20,7 +23,11 @@ function Home(props) {
         <Container data={DataCard[0]} />
         <SectionBGTransparent imagen="https://images.unsplash.com/photo-1602696491509-7e7a8adc761b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGFpc2FqZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
             <div>
-                <Container data={DataCard[0]} />
+                <div className="title-information">
+                    <h2> Mira más alla </h2>
+                    <h3> El donar sangre puede salvar mas de una vida </h3>
+                </div>
+                <Container data={DataCard[2]} />
             </div>
         </SectionBGTransparent>
         <SectionOfTitle title="Grupos Sanguíneos" />

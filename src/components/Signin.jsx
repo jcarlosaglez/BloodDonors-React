@@ -313,12 +313,12 @@ function Signin() {
                         </Button>
                         <Grid container alignItems="flex-end" direction="column">
                             <Grid item>
-                                <Link href="SignInDonor" variant="body1">
+                                <Link href="signin-donor" variant="body1">
                                     ¿Quieres ser un donador? Registrate aquí
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="LogIn" variant="body1">
+                                <Link href="Login" variant="body1">
                                     ¿Ya tienes una cuenta? Inicia sesión aquí
                                 </Link>
                             </Grid>

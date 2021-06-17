@@ -375,7 +375,7 @@ function SigninDonor() {
                                     required
                                     fullWidth
                                     id="question1"
-                                    label="Pregunta 1"
+                                    label="¿Cúal es tu peso actual?"
                                     onChange={handleFormAnswers}
                                 />
                             </Grid>
@@ -387,7 +387,7 @@ function SigninDonor() {
                                     required
                                     fullWidth
                                     id="question2"
-                                    label="Pregunta 2"
+                                    label="¿Tienes alguna cirugia?"
                                     onChange={handleFormAnswers}
                                 />
                             </Grid>
@@ -399,7 +399,7 @@ function SigninDonor() {
                                     required
                                     fullWidth
                                     id="question3"
-                                    label="Pregunta 3"
+                                    label="¿Has sifrido hepatitis?"
                                     onChange={handleFormAnswers}
                                 />
                             </Grid>
@@ -415,12 +415,12 @@ function SigninDonor() {
                         </Button>
                         <Grid container alignItems="flex-end" direction="column">
                             <Grid item>
-                                <Link href="SignIn" variant="body1">
+                                <Link href="Signin" variant="body1">
                                     ¿Necesitas a un donador? Registrate como Receptor aquí
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="LogIn" variant="body1">
+                                <Link href="Login" variant="body1">
                                     ¿Ya tienes una cuenta? Inicia sesión aquí
                                 </Link>
                             </Grid>

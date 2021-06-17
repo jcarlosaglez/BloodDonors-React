@@ -5,7 +5,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
 
 import Login from "../Login";
-import Signin from "../SigninDonor"; 
+import Signin from "../Signin";
+import SigninDonor from "../SigninDonor"; 
 import AccessPanel from "../AccessPanel";
 import RequestDonor from "../AccessPanel/RequestDonor.js";
 import ContactDonor from "../AccessPanel/ContactDonor.js";
@@ -28,6 +29,7 @@ const Routes = () => {
         <PrivateRoutes exact path="/panel" component={AccessPanel} /> 
 
         <PublicRoutes exact path="/login" component={Login} />
+        <PublicRoutes exact path="/signin-donor" component={SigninDonor} />
         <PublicRoutes exact path="/signin" component={Signin} />
         {/* Información estatica */}
         <Route exact path="/informacion/nosotros" component={AboutUs} />
