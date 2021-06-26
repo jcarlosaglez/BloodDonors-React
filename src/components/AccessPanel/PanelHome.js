@@ -17,7 +17,6 @@ import Box from '@material-ui/core/Box';
 import "../../css/AccessPanel/PanelHome.css";
 //Components
 import RequestDonor from "./RequestDonor";
-import User from './User';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -122,7 +121,7 @@ const PanelHome = () => {
           >
             <Tab label="Bienvenida" {...a11yProps(0)} />
             <Tab label="Solicitud" {...a11yProps(1)} />
-            <Tab label="Perfil" {...a11yProps(2)} />
+            <Tab label="Mensajes" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -142,7 +141,9 @@ const PanelHome = () => {
             <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <User />
+            <div>
+              <h2>Mensajes</h2>
+            </div>
           </TabPanel>
         </SwipeableViews>
         {fabs.map((fab, index) => (

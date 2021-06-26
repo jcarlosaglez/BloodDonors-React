@@ -1,0 +1,16 @@
+.accesPanel{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+.user{
+    grid-column: 1/4;
+    margin-top: 60px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.panelHome{
+    grid-column: 4/11;
+    width: 100%;
+}
