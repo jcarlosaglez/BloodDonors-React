@@ -16,6 +16,7 @@ const Footer = () => {
 const bgc = "#282c44"
 
 const footerStyle = {
+    textDecoration: "none",
     backgroundColor: bgc,
     display: "flex",
     justifyContent: "center",
@@ -36,6 +37,7 @@ const navStyle = {
 };
 
 const anchorStyle = {
+    textDecoration: "none",
     color: "whitesmoke",
     fontWeight: "bold"
 };
