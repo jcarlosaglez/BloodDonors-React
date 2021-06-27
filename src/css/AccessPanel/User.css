@@ -1,21 +1,22 @@
 .user{
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 	text-align: center;
-	width: 80%;
-	max-width: 500px; 
-	margin: auto;
-	border: 3px solid blue;
-	border-radius: 20px;
+	height: 100%;
 }
-.user div {
+.img-user{
+	height: 40%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.svg{
+	width: 300px;
+}
+.inf-user div {
 	margin: 20px 0;
 }
 
-.flex{
-	display: flex;
-	justify-content: center;
-}
-.flex > div{
-	margin: 0 20px;
-}

@@ -1,8 +1,10 @@
 .formRequestDonor{
     display: flex;
     justify-content: center;
+    padding-left: 20px;
 }
 .RequestDonor{
     height: 70vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 }

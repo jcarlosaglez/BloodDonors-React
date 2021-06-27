@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from "react-router-dom";
 import Redirect from "react-router-dom/Redirect";
 
 import Container from '@material-ui/core/Container';
@@ -24,7 +25,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Link from '@material-ui/core/Link';
 import FormHelperText from '@material-ui/core/FormHelperText';
 //Autenticación
 import useAuth from "./Auth/useAuth";
@@ -313,12 +313,12 @@ function Signin() {
                         </Button>
                         <Grid container alignItems="flex-end" direction="column">
                             <Grid item>
-                                <Link href="signin-donor" variant="body1">
+                                <Link to="signin-donor">
                                     ¿Quieres ser un donador? Registrate aquí
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="Login" variant="body1">
+                                <Link to="login">
                                     ¿Ya tienes una cuenta? Inicia sesión aquí
                                 </Link>
                             </Grid>

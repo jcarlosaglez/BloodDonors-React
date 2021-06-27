@@ -1,6 +1,6 @@
 // import img1 from "../img/1.png";
 
-let data = [
+const data = [
     {
         "title":"La importancia de donar sangre",
         "text":`Cuando se pierde la sangre por un accidente o una operación, sólo puede ser
