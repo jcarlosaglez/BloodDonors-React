@@ -3,9 +3,35 @@
     grid-template-columns: repeat(10, 1fr);
 }
 .user{
-    grid-column: 1/4;
+    display: none;
 }
 .panelHome{
-    grid-column: 4/11;
+    grid-column: 1/11;
     width: 100%;
 }
+@media (min-width: 576px) { 
+    .user{
+        grid-column: 1/4;
+        display: block;
+    }
+    .panelHome{
+        grid-column: 4/11;
+        width: 100%;
+    }
+ }
+
+@media (min-width: 768px) { 
+    .user{
+        grid-column: 1/3;
+    }
+    .panelHome{
+        grid-column: 3/11;
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) { 
+
+}
+
+@media (min-width: 1200px) {  }

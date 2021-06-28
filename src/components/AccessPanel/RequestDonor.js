@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useState} from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -9,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 
 //Components
 import DonorsList from './DonorsList';
+
 //CSS
 import "../../css/AccessPanel/RequestDonor.css";
 //Data
@@ -20,13 +22,29 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 250,
     },
 }));
-const RequestDonor = () => {    
-    const classes = useStyles();
+
+const RequestDonor = () => {   
+  
     
+    const classes = useStyles();
+    const [data, setData] = useState({        
+        "place_of_residence": "",
+        "blood_type": ""
+    });
+
+    const handleInputChange = (event) => {
+        setData({
+            ...data,
+            [event.target.name] : event.target.value.trim()
+        })
+    }
+    const sendData = () =>{
+        
+    }
     return (
 		<div className="RequestDonor">
             <div className="formRequestDonor">
-                <form >
+                <form onSubmit={sendData}>
                     <Grid container spacing={3}>
                         {/* <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="grouped-native-select">Estado</InputLabel>
@@ -72,7 +90,7 @@ const RequestDonor = () => {
                                 <InputLabel htmlFor="Ciudad">Ciudad</InputLabel>
                                     <Select defaultValue="" id="Ciudad">
                                         <MenuItem value="">
-                                            <em>No  importa</em>
+                                            <em> Seleccionar</em>
                                         </MenuItem>
                                         <MenuItem value={"Cd-Mx"}>Ciudad de México</MenuItem>
                                     </Select>
@@ -84,12 +102,13 @@ const RequestDonor = () => {
                                 <Select
                                     id="place_of_residence"
                                     name="place_of_residence"
-                                    defaultValue=""
+                                    value={data.place_of_residence}
                                     label="Hospital"
+                                    onChange={() => handleInputChange}
                                 >
                                     {
                                         Hospital.map( hos => 
-                                            <MenuItem value={hos.clave}>{hos.name}</MenuItem>
+                                            <MenuItem value={hos.clave} key={hos.clav}>{hos.name}</MenuItem>
                                         )
                                     }
                                     
@@ -98,15 +117,25 @@ const RequestDonor = () => {
                         </Grid>
                         <Grid item xs={12} md={4} >
                             <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="grouped-blood">Tipo de sangre</InputLabel>
-                                <Select defaultValue="" id="grouped-blood">
-                                <MenuItem value="">
-                                    <em>No  importa</em>
-                                </MenuItem>
-                                <MenuItem value={"A"}>A</MenuItem>
-                                <MenuItem value={"B"}>B</MenuItem>
-                                <MenuItem value={"AB"}>AB</MenuItem>
-                                <MenuItem value={"O"}>O</MenuItem>
+                                <InputLabel htmlFor="blood_type">Tipo de sangre</InputLabel>
+                                <Select 
+                                    id="blood_type"
+                                    name="blood_type"
+                                    value={data.blood_type}
+                                    label="Grupo sanguíneo"
+                                    onChange={() => handleInputChange}
+                                >
+                                    <MenuItem value="">
+                                        <em>No  importa</em>
+                                    </MenuItem>
+                                    <MenuItem value={"A+"}>A+</MenuItem>
+                                    <MenuItem value={"B+"}>B+</MenuItem>
+                                    <MenuItem value={"AB+"}>AB+</MenuItem>
+                                    <MenuItem value={"O+"}>O+</MenuItem>  
+                                    <MenuItem value={"A-"}>A-</MenuItem>
+                                    <MenuItem value={"B-"}>B-</MenuItem>
+                                    <MenuItem value={"AB-"}>AB-</MenuItem>
+                                    <MenuItem value={"O-"}>O-</MenuItem>
                                 </Select>
                             </FormControl>
                         </Grid>
