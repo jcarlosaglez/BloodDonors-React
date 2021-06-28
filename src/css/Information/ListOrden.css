@@ -1,0 +1,10 @@
+.container-list{
+    text-align: justify;
+    padding: 0px 10px;
+}
+.container-list > ol >li{
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 900;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

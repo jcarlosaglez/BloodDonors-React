@@ -1,4 +1,4 @@
-let data = [
+const data = [
     "Se recomienda presentarse aseado, el uso de ropa cómoda y de manga corta.",
     "Es necesario disponer de dos horas, tiempo aproximado de duración total del proceso de donación de sangre.",
     "No se permite el paso a menores de edad ni acompañantes.",

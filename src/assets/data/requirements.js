@@ -1,4 +1,4 @@
-let data = [
+const data = [
     "Acudir con una identificación oficial con fotografía y vigente (INE, pasaporte, cédula profesional, credencial ADIMSS, cartilla de salud vigente, licencia de manejo)",
     "Edad de 18 a 65 años.",
     "Peso mayor de 50 kilogramos.",

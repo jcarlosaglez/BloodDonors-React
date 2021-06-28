@@ -17,7 +17,6 @@ const AuthProvider = ({children}) =>{
             setUser({
                 token
             })
-            console.log(user)
         },
         logout() {
             setUser(null);

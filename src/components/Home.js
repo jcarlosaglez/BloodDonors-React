@@ -20,8 +20,11 @@ const Home = () => {
 					</div>
 				}
 				{auth.isLogged() && 
-					<div className="containerButton" onClick={() => auth.logout()}>
-						<button className="button">Cerrar sesión</button>
+					<div className="containerButton">
+						<Link to="/panel" className="button">Panel de usuario</Link>
+						<div className="containerButton" onClick={() => auth.logout()}>
+							<button className="button">Cerrar sesión</button>
+						</div>
 					</div>
 				}
 				<NavBarHome />

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Redirect from "react-router-dom/Redirect";
+import { Link as RouterLink } from "react-router-dom";
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -35,6 +36,9 @@ import useAuth from "./Auth/useAuth";
 //Estilos css
 import "../css/Form.css";
 
+//datos
+import Hospital from '../assets/data/HospitalCdMx';
+
 function SigninDonor() {
     const [datos, setDatos] = useState({        
         "curp": "",
@@ -50,7 +54,7 @@ function SigninDonor() {
         "form_answers": {}
     })
     const [birthday, setBirthday] = React.useState(new Date());
-    const[showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = React.useState(false);
     const [formAnswers, setFormAnswers] = React.useState({});
     const [errors, setErrors] = React.useState({
     });
@@ -315,16 +319,29 @@ function SigninDonor() {
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    autoComplete="place_of_residence"
-                                    name="place_of_residence"
+                                <FormControl
                                     variant="outlined"
-                                    required
                                     fullWidth
-                                    id="place_of_residence"
-                                    label="Lugar de residencia"
-                                    onChange={handleInputChange}
-                                />
+                                    error={!!errors.place_of_residence}
+                                    required
+                                >
+                                    <InputLabel htmlFor="place_of_residence">Lugar donde puedas donar sangre</InputLabel>
+                                    <Select
+                                        id="place_of_residence"
+                                        name="place_of_residence"
+                                        value={datos.place_of_residence}
+                                        label="Lugar donde puedas donar sangre"
+                                        onChange={handleInputChange}
+                                    >
+                                        {
+                                            Hospital.map( hos => 
+                                                <MenuItem value={hos.clave}>{hos.name}</MenuItem>
+                                            )
+                                        }
+                                        
+                                    </Select>
+                                    <FormHelperText>{errors.place_of_residence}</FormHelperText>
+                                </FormControl>  
                             </Grid>
                             <Grid item xs={4}>
                                 <FormControl
@@ -375,7 +392,7 @@ function SigninDonor() {
                                     required
                                     fullWidth
                                     id="question1"
-                                    label="Pregunta 1"
+                                    label="¿Cúal es tu peso actual?"
                                     onChange={handleFormAnswers}
                                 />
                             </Grid>
@@ -387,7 +404,7 @@ function SigninDonor() {
                                     required
                                     fullWidth
                                     id="question2"
-                                    label="Pregunta 2"
+                                    label="¿Tienes alguna cirugia?"
                                     onChange={handleFormAnswers}
                                 />
                             </Grid>
@@ -399,7 +416,7 @@ function SigninDonor() {
                                     required
                                     fullWidth
                                     id="question3"
-                                    label="Pregunta 3"
+                                    label="¿Has sifrido hepatitis?"
                                     onChange={handleFormAnswers}
                                 />
                             </Grid>
@@ -415,12 +432,12 @@ function SigninDonor() {
                         </Button>
                         <Grid container alignItems="flex-end" direction="column">
                             <Grid item>
-                                <Link href="SignIn" variant="body1">
+                                <Link component={RouterLink} to="/Signin">
                                     ¿Necesitas a un donador? Registrate como Receptor aquí
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="LogIn" variant="body1">
+                                <Link component={RouterLink} to="/login">
                                     ¿Ya tienes una cuenta? Inicia sesión aquí
                                 </Link>
                             </Grid>

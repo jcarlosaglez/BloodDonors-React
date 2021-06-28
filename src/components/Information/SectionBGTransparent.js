@@ -13,8 +13,6 @@ function SectionBGTransparent(props) {
     };
     return (
         <section className="ContainerTransparent" style={divStyle}>
-            <h2 className=""> HOla </h2>
-            <h3> Que tal</h3>
             {props.children}
         </section>
         )

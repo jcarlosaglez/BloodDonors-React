@@ -1,4 +1,4 @@
-let data = [
+const data = [
     {
         "title":"Historía",
         "text":`Nos conocimos mediante una convocatoria de Desarrollo web FullStack por parde 

@@ -42,6 +42,21 @@
     display: none;
     transition: 2s ease all;
 }
+.button-nav{
+    text-decoration: none;
+    color: red;
+    background-color: rgb(248, 197, 197);
+    border: 1px solid red;
+    border-radius: 30px;
+    padding: 7px;
+    margin: 0 5px;
+    font-size: 15px;
+    font-weight: 900;
+}
+.button-nav:hover{
+    background-color: red;
+    color: aliceblue;
+}
 @media (min-width: 768px) { 
 
 }
