@@ -2,14 +2,8 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
 }
-.user-panel{
+.user{
     grid-column: 1/4;
-    margin-top: 60px;
-    width: 90%;
-    height: 80vh;
-    margin-left: 5%;
-    background-color: burlywood;
-    border-radius: 30px;
 }
 .panelHome{
     grid-column: 4/11;

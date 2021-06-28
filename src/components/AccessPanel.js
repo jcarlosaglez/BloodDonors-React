@@ -8,12 +8,8 @@ import "../css/AccessPanel/AcessPanel.css";
 function AccessPanel() { 
     return (
       <div className="accesPanel">
-        <div className="user-panel">
           <User />
-        </div>
-        <div className="panelHome">
           <PanelHome />
-        </div>
       </div>
     );
 }

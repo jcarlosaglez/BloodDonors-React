@@ -109,7 +109,7 @@ const PanelHome = () => {
     ];
   
     return (
-      <div className={`arriba`}>
+      <div className={`panelHome arriba`}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}

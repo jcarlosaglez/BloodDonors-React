@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 // Autenticación
-import useLocalStorage from "./useLocalStorage";
 import useAuth from "./Auth/useAuth";
 
 import {Redirect} from "react-router-dom";
@@ -73,7 +72,6 @@ function Login() {
 		email: "",
 		password: "",
 	});
-	const [token, setToken] = useLocalStorage("localToken");
 	const [isDonor, setIsDonor] = React.useState(true);
 	const [error, setError] = React.useState(false);
 	const handleInpChange = (event) => {
@@ -107,8 +105,8 @@ function Login() {
                 return;
 			}
 			const user = await response.json();
+			console.log(user);
 			auth.login(user.user.token);
-            setToken(user.user.token);
 		} catch (error) {
 			console.log(error);
 		}
