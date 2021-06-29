@@ -8,3 +8,10 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.button-form{
+    background-color: tomato;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 20px;
+    height: 40px;
+}

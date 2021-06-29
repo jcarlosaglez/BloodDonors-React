@@ -121,7 +121,7 @@ const PanelHome = () => {
           >
             <Tab label="Bienvenida" {...a11yProps(0)} />
             <Tab label="Solicitud" {...a11yProps(1)} />
-            <Tab label="Mensajes" {...a11yProps(2)} />
+            <Tab label="Contactos" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -142,7 +142,7 @@ const PanelHome = () => {
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             <div>
-              <h2>Mensajes</h2>
+              <h2>Contactos</h2>
             </div>
           </TabPanel>
         </SwipeableViews>

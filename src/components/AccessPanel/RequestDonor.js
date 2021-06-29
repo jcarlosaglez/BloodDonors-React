@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
 //Components
 import DonorCard from "./DonorCard";
@@ -28,7 +29,8 @@ const RequestDonor = () => {
 
     const [data, setData] = useState({        
         "place_of_residence": "",
-        "blood_type": ""
+        "blood_type": "",
+        "message":""
     });
     const [donors, setDonors] = useState([]);
 
@@ -53,7 +55,8 @@ const RequestDonor = () => {
                         }
                     });
                     const dataServ = await response.json();
-                    const resp = await dataServ.filter((dat) => dat.blood_type === data.blood_type);
+                    console.log(data);
+                    const resp = await dataServ.filter((dat) => dat.blood_type === data.blood_type ); // && dat.place_of_residence === data.place_of_residence);
                     setDonors(resp);
                 }
                 catch(e) {
@@ -62,7 +65,6 @@ const RequestDonor = () => {
             }
             getData();
         }
-        console.log(data);
     }
     return (
 		<div className="RequestDonor">
@@ -162,10 +164,27 @@ const RequestDonor = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        <button variant="contained" color="secondary">
+                        <Grid item xs={12}>
+                            <TextField
+                                id="message"
+                                name="message"
+                                value={data.message}
+                                label="Mensaje"
+                                onChange={handleInputChange}
+                                multiline
+                                rowsMax={8}
+                                style={{width:"100%"}}
+                                title="En el mensaje se ingresa la inforcación del pasiente con la que su hospital la identifica:
+                                Número de cama, piso, etc. Pregunte a su hospital si no esta segura que información es"
+                            />
+                        </Grid>
+                        <button className="button-form">
                             Solicitar
                         </button>
                     </Grid>
+                        <p style={{textAlign: "center"}}>En el mensaje se ingresa la inforcación del pasiente con la que su hospital la identifica: <br />
+                            Número de cama, piso, etc. <br /> Pregunte a su hospital si no esta segura que información.
+                        </p>
                 </form> 
             </div>
             <div className="list-container">
