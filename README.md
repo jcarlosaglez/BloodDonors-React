@@ -1,6 +1,16 @@
-# Getting Started with Create React App
+# Blood Index
+
+Puedes encontrar este proyecto desplegado en [Blood Index](https://blood-index.netlify.app/)
+
+El Back-end podras encontrarlo en [Back-end](https://github.com/killjoy157/apiBloodDonors)
+
+## Creado con
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Blood Index
+
+Aplicación que conecta donadores voluntarios con personas que necesitan unides de sangue.
 
 ## Available Scripts
 

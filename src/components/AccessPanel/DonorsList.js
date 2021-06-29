@@ -14,14 +14,17 @@ const DonorsList = ( props ) =>{
         const getData = async () =>
         {
             try {
-                const response = await fetch(`https://blood-donors-v1.herokuapp.com/v1/donors/search?field=blood_type&value=${props.data.blood_type}`, {
+                const response = await fetch("https://blood-donors-v1.herokuapp.com/v1/donors/search?field=blood_type&value=A-", {
                     method: "GET",
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'x-access-token': auth.user
                     }
                 });
                 const data = await response.json();
+
                 const resp = data.filter((dat) => dat.place_of_residence === props.data.place_of_residence);
+                console.log(response, props.data)
                 setDonors(resp);
             }
             catch(e) {
@@ -33,7 +36,7 @@ const DonorsList = ( props ) =>{
 
     return(
         <div className="list-container">
-            <h1>Lista de donadores</h1>
+            <h1>Lista de donadores </h1>
 
             {donors.map(donor => <DonorCard key={donor.id} donor={donor} />)}
             
