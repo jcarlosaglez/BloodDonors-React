@@ -5,14 +5,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 //Components
-import DonorsList from './DonorsList';
+import DonorCard from "./DonorCard";
 
 //CSS
 import "../../css/AccessPanel/RequestDonor.css";
+import "../../css/DonorsList.css";
 //Data
 import Hospital from '../../assets/data/HospitalCdMx';
 
@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RequestDonor = () => {   
-  
-    
     const classes = useStyles();
+
     const [data, setData] = useState({        
         "place_of_residence": "",
         "blood_type": ""
     });
+    const [donors, setDonors] = useState([]);
 
     const handleInputChange = (event) => {
         setData({
@@ -38,8 +38,31 @@ const RequestDonor = () => {
             [event.target.name] : event.target.value.trim()
         })
     }
-    const sendData = () =>{
-        
+    const sendData = (event) =>{
+        event.preventDefault();
+        console.log(data)
+        if(event.target.blood_type.value !== "" && event.target.place_of_residence.value !== ""){
+            const getData = async () =>
+            {
+                try {
+                    const url = `https://blood-donors-v1.herokuapp.com/v1/donors`;
+                    const response = await fetch(url, {
+                        method: "GET",
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                    const dataServ = await response.json();
+                    const resp = await dataServ.filter((dat) => dat.blood_type === data.blood_type);
+                    setDonors(resp);
+                }
+                catch(e) {
+                    console.error(e);
+                }
+            }
+            getData();
+        }
+        console.log(data);
     }
     return (
 		<div className="RequestDonor">
@@ -104,11 +127,11 @@ const RequestDonor = () => {
                                     name="place_of_residence"
                                     value={data.place_of_residence}
                                     label="Hospital"
-                                    onChange={() => handleInputChange}
+                                    onChange={handleInputChange}
                                 >
                                     {
                                         Hospital.map( hos => 
-                                            <MenuItem value={hos.clave} key={hos.clav}>{hos.name}</MenuItem>
+                                            <MenuItem value={hos.clave} key={hos.clave}>{hos.name}</MenuItem>
                                         )
                                     }
                                     
@@ -123,7 +146,7 @@ const RequestDonor = () => {
                                     name="blood_type"
                                     value={data.blood_type}
                                     label="Grupo sanguíneo"
-                                    onChange={() => handleInputChange}
+                                    onChange={handleInputChange}
                                 >
                                     <MenuItem value="">
                                         <em>No  importa</em>
@@ -139,13 +162,16 @@ const RequestDonor = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        <Button variant="contained" color="secondary">
+                        <button variant="contained" color="secondary">
                             Solicitar
-                        </Button>
+                        </button>
                     </Grid>
                 </form> 
             </div>
-			<DonorsList />
+            <div className="list-container">
+                <h1>Lista de donadores </h1>
+                    {donors.map(donor => <DonorCard key={donor.id} donor={donor} />)}
+            </div>
 		</div>
     );
 }
