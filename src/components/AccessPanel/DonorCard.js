@@ -3,16 +3,49 @@ import {Link} from "react-router-dom";
 import "../../css/DonorCard.css"
 import PropTypes from 'prop-types';
 
-const DonorCard = (props) => 
-    <div className="donor-card">
-        <h2>{props.donor.first_name}</h2>
-        <p>Tipo de sangre: {props.donor.blood_type}</p>
-        <p>Ubicación: {props.donor.place_of_residence}</p>
-        <div className="flex">
-            <Link to={`/panel/contacto/id=${props.donor.id}`}>Mas información</Link>
-        </div>
-    </div>
+import useAuth from "../Auth/useAuth";
 
+const DonorCard = (props) => {
+		const auth = useAuth();
+		const contacDonor = () => {
+        const getData = async () =>
+        {
+					const data = {
+						id_donor: props.donor.id,
+						required_blood_type: props.me.blood_type,
+						message: props.me.message 
+					}
+					console.log(data, auth.user.token)
+            try {
+                const response = await fetch("https://blood-donors-v1.herokuapp.com/v1/requests/", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+												'Authorization': 'Bearer '+ auth.user.token,
+												'TOKEN': auth.user
+                    }, 
+										body: JSON.stringify(data)
+                });
+                console.log(response)
+            }
+            catch(e) {
+                console.error(e);
+            }
+        }
+        getData();
+    };
+
+    return(
+        <div className="donor-card">
+            <h2>{props.donor.first_name}</h2>
+            <p>Tipo de sangre: {props.donor.blood_type}</p>
+            <p>Ubicación: {props.donor.place_of_residence}</p>
+            <div className="flex">
+                <Link onClick={() => contacDonor()}>Contactar</Link>
+            </div>
+        </div>
+    )
+}
 DonorCard.propTypes = {
     donor: PropTypes.object.isRequired
 }

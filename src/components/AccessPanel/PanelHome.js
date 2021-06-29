@@ -17,6 +17,7 @@ import Box from '@material-ui/core/Box';
 import "../../css/AccessPanel/PanelHome.css";
 //Components
 import RequestDonor from "./RequestDonor";
+import ContactDonor from "./ContactDonor";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -69,8 +70,9 @@ function TabPanel(props) {
     },
   }));
 
-const PanelHome = () => {
-    const classes = useStyles();
+const PanelHome = (props) => {
+		const me = props.me;
+		const classes = useStyles();
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
   
@@ -141,9 +143,7 @@ const PanelHome = () => {
             <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <div>
-              <h2>Contactos</h2>
-            </div>
+            <ContactDonor me={me}/>
           </TabPanel>
         </SwipeableViews>
         {fabs.map((fab, index) => (
@@ -164,4 +164,9 @@ const PanelHome = () => {
       </div>
     );
 }
+
+PanelHome.prototype = {
+	me: PropTypes.object.isRequired
+}
+
 export default PanelHome; 
