@@ -38,7 +38,7 @@ const AuthProvider = ({children}) =>{
             setEmail(null);
         },
         isLogged() {
-            if(user.type !== null){
+            if(user !== null && user.type !== null ){
                 return true
             } else {
                 return false
