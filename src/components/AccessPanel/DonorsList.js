@@ -13,8 +13,9 @@ const DonorsList = ( props ) =>{
     React.useEffect(() => {
         const getData = async () =>
         {
+            const url = auth.url[0] + "donor" + auth.url[1] + "/";
             try {
-                const response = await fetch("https://blood-donors-v1.herokuapp.com/v1/donors/search?field=blood_type&value=A-", {
+                const response = await fetch(url, {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json',

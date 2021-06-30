@@ -10,6 +10,8 @@ import useAuth from "./Auth/useAuth";
 
 function AccessPanel() { 
   const auth = useAuth();
+  const user = auth.type.typeUser;
+  const url = auth.url[0] + user + auth.url[1]+"/me";
   const [me, setMe] = useState({
     first_name: "Juan",
     email: "ger@ger",
@@ -17,16 +19,19 @@ function AccessPanel() {
   })
   useEffect(() => {
     const GetData = async () =>
-    {   let data;
+    {   
+      let data;
         try {
-            const response = await fetch(`https://blood-donors-v1.herokuapp.com/v1/${auth.type.typeUser === "donor" ? "donors" : "receivers"}/search?field=email&value=${auth.email}`, {
+            const response = await fetch(url, {
                 method: "GET",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer '+ auth.user.token
                 }
             });
             data = await response.json();
-            setMe(data[0]);
+            console.log(data, "usuario", auth.user.token);
+            setMe(data.data);
             return
         }
         catch(e) {
@@ -34,7 +39,7 @@ function AccessPanel() {
         }
     }
     GetData();
-  },[]);
+  },[url]);
 
   return (
     <div className="accesPanel">

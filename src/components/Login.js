@@ -94,8 +94,12 @@ function Login() {
 		event.preventDefault();
 
 		//Servidor
+		const typeUSer = ["donor", "receiver"];
+		let user;
+		if(!!isDonor){ user=typeUSer[0] }
+		else{ user=typeUSer[1] };
 		const config = {
-			url: `https://blood-donors-v1.herokuapp.com/v1/${isDonor ? "donors" : "receivers"}/login`,
+			url: auth.url[0] + user + auth.url[1] + "/login",
 			method: "POST",
 		};
 		try {
@@ -109,7 +113,8 @@ function Login() {
 			if(isDonor){ 
 				typeUser = "donor"
 			}else{ typeUser = "receiver"}
-			auth.login(user.user.token, user.user.email, typeUser);
+			console.log(user.data, "Login");
+			auth.login(user.data.token, user.email, typeUser);
 		} catch (error) {
 			console.log(error);
 		}

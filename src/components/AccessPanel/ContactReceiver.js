@@ -9,15 +9,18 @@ const ContactDonor = (props) => {
     useEffect(() => {
         const getData = async () =>
         {
+            const url = auth.url[0] + "request" + auth.url[1] + "/";
             try {
-                const response = await fetch("https://blood-donors-v1.herokuapp.com/v1/requests/", {
+                const response = await fetch(url, {
                     method: "GET",
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer '+ auth.user.token
                     }
                 });
                 const dataServ = await response.json();
-				const resp = await dataServ.filter((dat) => dat.id_receiver._id === props.me.id && (dat.status !== "Cancelada")); 
+                console.log(dataServ.data)
+				const resp = await dataServ.data.filter((dat) => dat.id_receiver === props.me.id && (dat.status !== "cancelada")); 
                 setRequests(resp);
             }
             catch(e) {
@@ -29,8 +32,9 @@ const ContactDonor = (props) => {
 
 		async function deletRequest(request) {
 			console.log("Hola");
+            const url = auth.url[0] + "request" + auth.url[1] + "/" + request.id;
             try {
-                const response = await fetch(`https://blood-donors-v1.herokuapp.com/v1/requests/${request.id}`, {
+                const response = await fetch(url, {
                     method: "DELETE",
                     headers: {
                         'Content-Type': 'application/json',

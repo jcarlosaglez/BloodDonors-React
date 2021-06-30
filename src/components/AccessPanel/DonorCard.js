@@ -10,21 +10,21 @@ const DonorCard = (props) => {
 		const contacDonor = () => {
         const getData = async () =>
         {
-					const data = {
-						id_donor: props.donor.id,
-						required_blood_type: props.me.blood_type,
-						message: props.me.message 
-					}
-					console.log(data, auth.user.token)
+            const data = {
+                id_donor: props.donor.id,
+                required_blood_type: props.me.blood_type,
+                message: props.me.message 
+            }
+            console.log(data, auth.user.token)
+            const url = auth.url[0] + "request" + auth.url[1] + "/";
             try {
-                const response = await fetch("https://blood-donors-v1.herokuapp.com/v1/requests/", {
+                const response = await fetch(url, {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
-												'Authorization': 'Bearer '+ auth.user.token,
-												'TOKEN': auth.user
+                        'Authorization': 'Bearer '+ auth.user.token
                     }, 
-										body: JSON.stringify(data)
+                    body: JSON.stringify(data)
                 });
                 console.log(response)
             }

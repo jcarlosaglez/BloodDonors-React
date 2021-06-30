@@ -9,8 +9,9 @@ const ContactDonor = (props) => {
     useEffect(() => {
         const getData = async () =>
         {
+            const url = auth.url[0]+ "request"+auth.url[1]+"/"
             try {
-                const response = await fetch("https://blood-donors-v1.herokuapp.com/v1/requests/", {
+                const response = await fetch(url, {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json'
@@ -29,8 +30,9 @@ const ContactDonor = (props) => {
 
 		async function responderRequest(request, respuesta) {
 			console.log("Hola");
+            const url = auth.url[0] + "request" + auth.url[1] + "/" + request.id;
             try {
-                const response = await fetch(`https://blood-donors-v1.herokuapp.com/v1/requests/${request.id}`, {
+                const response = await fetch(url, {
                     method: "PUT",
                     headers: {
                         'Content-Type': 'application/json',
