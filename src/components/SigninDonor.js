@@ -77,7 +77,7 @@ function SigninDonor() {
         })
     }, [formAnswers]);
     const handleDateChange = (date) => {
-        setBirthday(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+        setBirthday(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()+1}`);
     };
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -85,7 +85,7 @@ function SigninDonor() {
 
     React.useEffect(()=> {
         const defaultDate = new Date(2000, 0, 1);
-        setBirthday(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()}`);
+        setBirthday(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()+1}`);
     }, [])
 
     React.useEffect(() => {
@@ -114,12 +114,13 @@ function SigninDonor() {
 			const response = await goToBackend(config, datos);
 			if (!response.ok) {
                 const errorss = await response.json();
-				setErrors({...errorss.errors});
+								setErrors({...errorss.errors});
                 return;
 			}
 			const user = await response.json();
-            setErrors({});
-            auth.login(user.user.token);
+      auth.login(user.token, "donor");
+			setErrors({});
+						
 		} catch (error) {
 			console.error(error);
 		}

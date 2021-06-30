@@ -124,6 +124,7 @@ const PanelHome = (props) => {
             <Tab label="Bienvenida" {...a11yProps(0)} />
             <Tab label="Solicitud" {...a11yProps(1)} />
             <Tab label="Contactos" {...a11yProps(2)} />
+						<Tab label="Solicitudes" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -132,17 +133,20 @@ const PanelHome = (props) => {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-          <div className="PanelHome">
-            <div>
+          	<div className="PanelHome">
+        	    <div>
                 <h2> Bienvenido a <br/> Blood Index</h2>
                 <h3>Gracias por apoyar esta iniciativa</h3>  
-            </div>
-        </div>
+      	      </div>
+	  	      </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
+            <ContactDonor me={me}/>
+          </TabPanel>
+          <TabPanel value={value} index={3} dir={theme.direction}>
             <ContactDonor me={me}/>
           </TabPanel>
         </SwipeableViews>

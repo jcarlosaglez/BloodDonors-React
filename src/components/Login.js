@@ -106,7 +106,11 @@ function Login() {
 			}
 			const user = await response.json();
 			console.log(user);
-			auth.login(user.user.token);
+			let typeUser = "";
+			if(isDonor){ 
+				typeUser = "donors"
+			}else{ typeUser = "receivers"}
+			auth.login(user.user.token, typeUser);
 		} catch (error) {
 			console.log(error);
 		}

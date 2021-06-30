@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import useAuth from "../Auth/useAuth";
 
 function RequestCard(props){
-    const request = props.request;
-
+		const auth = useAuth();
+		const request = props.request;
+		const deletRequest = props.deletRequest;
+		
     return(
         <div>
             <div>
@@ -21,13 +24,13 @@ function RequestCard(props){
 								</div>
             </div>
             <div>
-                <button>Cancelar </button>
+                <button onClick={() => deletRequest(request)}>Cancelar </button>
             </div>
         </div>
     )
 }
 RequestCard.prototype = {
-    request: PropTypes.object.isRequired
+    request: PropTypes.object.isRequired,
 }
 
 export default RequestCard;

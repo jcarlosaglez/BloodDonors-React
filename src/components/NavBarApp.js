@@ -32,8 +32,8 @@ export default function NavBarApp() {
 				<div>
 					{!auth.isLogged() && 
                     	<div className="containerButton">
-							<Link to="/SignIn" className="button-nav">Sign in</Link>
-							<Link to="/LogIn" className="button-nav">Login</Link>
+							<Link to="/signin" className="button-nav">Sign in</Link>
+							<Link to="/login" className="button-nav">Login</Link>
 						</div>
 					}
                 	{auth.isLogged() && 
