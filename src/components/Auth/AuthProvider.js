@@ -14,9 +14,7 @@ const AuthProvider = ({children}) =>{
         JSON.parse(localStorage.getItem("emailUser")) || null
     )
     useEffect(() => {
-        localStorage.setItem("typeUser", JSON.stringify(type));
-        localStorage.setItem("emailUser", JSON.stringify(email));   
-        localStorage.setItem("token", JSON.stringify(user))
+        localStorage.setItem("token", JSON.stringify({user, email, type}));
     },[type, email, user])
     const contexValue = {
         url,
