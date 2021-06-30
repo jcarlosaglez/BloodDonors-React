@@ -107,7 +107,7 @@ function SigninDonor() {
 
 		//Servidor
 		const config = {
-			url: "https://blood-donors-v1.herokuapp.com/v1/donors/",
+			url: auth.url[0]+"donor"+auth.url[1]+"/",
 			method: "POST",
 		};
 		try {

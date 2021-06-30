@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({children}) =>{
-    const url = "https://blood-donors-v1.herokuapp.com/v1/";
+    const url = ["https://blood-donors-v1.herokuapp.com/v1/", "s"];
     const [user, setUser] = useState(
         JSON.parse(localStorage.getItem("token")) || null
     );

@@ -11,7 +11,7 @@ import useAuth from "./Auth/useAuth";
 function AccessPanel() { 
   const auth = useAuth();
   const user = auth.type.typeUser;
-  const url = auth.url + user +"s/search?field=email&value="+auth.email;
+  const url = auth.url[0] + user + auth.url[1]+"/search?field=email&value="+auth.email;
   const [me, setMe] = useState({
     first_name: "Juan",
     email: "ger@ger",

@@ -80,10 +80,10 @@ function Signin() {
 	};
 	const sendData = async (event) => {
 		event.preventDefault();
-
+        const url = auth.url[0] + "receiver"+ auth.url[1]+"/"
 		//Servidor
 		const config = {
-			url: "https://blood-donors-v1.herokuapp.com/v1/receivers/",
+			url: url,
 			method: "POST",
 		};
 		try {
