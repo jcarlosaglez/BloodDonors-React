@@ -22,8 +22,7 @@ const DonorCard = (props) => {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer '+ auth.user.token,
-                        'TOKEN': auth.user
+                        'Authorization': 'Bearer '+ auth.user.token
                     }, 
                     body: JSON.stringify(data)
                 });

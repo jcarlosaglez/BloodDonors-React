@@ -11,7 +11,7 @@ import useAuth from "./Auth/useAuth";
 function AccessPanel() { 
   const auth = useAuth();
   const user = auth.type.typeUser;
-  const url = auth.url[0] + user + auth.url[1]+"/search?field=email&value="+auth.email;
+  const url = auth.url[0] + user + auth.url[1]+"/me";
   const [me, setMe] = useState({
     first_name: "Juan",
     email: "ger@ger",
@@ -25,11 +25,13 @@ function AccessPanel() {
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer '+ auth.user.token
                 }
             });
             data = await response.json();
-            setMe(data[0]);
+            console.log(data, "usuario", auth.user.token);
+            setMe(data.data);
             return
         }
         catch(e) {

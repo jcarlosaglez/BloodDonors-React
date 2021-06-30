@@ -113,7 +113,8 @@ function Login() {
 			if(isDonor){ 
 				typeUser = "donor"
 			}else{ typeUser = "receiver"}
-			auth.login(user.user.token, user.user.email, typeUser);
+			console.log(user.data, "Login");
+			auth.login(user.data.token, user.email, typeUser);
 		} catch (error) {
 			console.log(error);
 		}
