@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "../../css/DonorCard.css"
 import PropTypes from 'prop-types';
+//datos
+import Hospital from '../../assets/data/HospitalCdMx';
 
 import useAuth from "../Auth/useAuth";
 
@@ -34,12 +36,12 @@ const DonorCard = (props) => {
         }
         getData();
     };
-
+    const hosp = Hospital.find((hos) => props.donor.clave_hospital === hos.clave);
     return(
         <div className="donor-card">
             <h2>{props.donor.first_name}</h2>
             <p>Tipo de sangre: {props.donor.blood_type}</p>
-            <p>Ubicación: {props.donor.place_of_residence}</p>
+            <p>Ubicación: { hosp.name }</p>
             <div className="flex">
                 <Link onClick={() => contacDonor()}>Contactar</Link>
             </div>

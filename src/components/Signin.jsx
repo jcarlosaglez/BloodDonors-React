@@ -36,15 +36,15 @@ function Signin() {
         "curp": "",
         "first_name": "",
         "last_name": "",
-        "birthday": "",
+        "date_of_birth": "",
         "gender": "",
         "email": "",
         "phone_number": "",
         "place_of_residence": "",
-        "password":""        
+        "password": ""        
     })
-    const [birthday, setBirthday] = React.useState(new Date());
-    const[showPassword, setShowPassword] = React.useState(false);
+    const [dateOfBirth, setDateOfBirth] = React.useState(new Date());
+    const [showPassword, setShowPassword] = React.useState(false);
     const [errors, setErrors] = React.useState({});
     const handleInputChange = (event) => {
         setDatos({
@@ -53,7 +53,7 @@ function Signin() {
         })
     }
     const handleDateChange = (date) => {
-        setBirthday(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()+1}`);
+        setDateOfBirth(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()+1}`);
     };
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -61,12 +61,12 @@ function Signin() {
 
     React.useEffect(()=> {
         const defaultDate = new Date(2000, 0, 1);
-        setBirthday(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()+1}`);
+        setDateOfBirth(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()+1}`);
     }, [])
 
     React.useEffect(() => {
-        datos.birthday = birthday;
-    }, [birthday])
+        datos.date_of_birth = dateOfBirth;
+    }, [dateOfBirth])
 
     const goToBackend = (config, data) => {
 		return fetch(config.url, {
@@ -80,7 +80,8 @@ function Signin() {
 	};
 	const sendData = async (event) => {
 		event.preventDefault();
-        const url = auth.url[0] + "receiver"+ auth.url[1]+"/"
+        const url = auth.url[0] + "receiver"+ auth.url[1]+"/";
+
 		//Servidor
 		const config = {
 			url: url,
@@ -94,9 +95,9 @@ function Signin() {
                 return;
 			}
 			const user = await response.json();
-      auth.login(user.token, user.email, "receiver");
-      setErrors({});
-     } catch (error) {
+            auth.login(user.data.token, user.email, "receiver");
+            setErrors({});
+        } catch (error) {
 			console.error(error);
 		}
 	};
@@ -187,14 +188,14 @@ function Signin() {
                                         required
                                         fullWidth
                                         variant="inline"
-                                        name="birthday"
+                                        name="dateOfBirth"
                                         format="dd/MM/yyyy"
                                         margin="normal"
-                                        id="birthday"
+                                        id="dateOfBirth"
                                         label="Fecha de nacimiento:"
-                                        value={birthday}
-                                        error={!!errors.birthday}
-                                        helperText={errors.birthday}
+                                        value={dateOfBirth}
+                                        error={!!errors.dateOfBirth}
+                                        helperText={errors.dateOfBirth}
                                         onChange={handleDateChange}
                                     />
                                 </MuiPickersUtilsProvider>

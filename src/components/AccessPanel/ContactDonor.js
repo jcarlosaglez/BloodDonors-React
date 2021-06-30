@@ -14,11 +14,13 @@ const ContactDonor = (props) => {
                 const response = await fetch(url, {
                     method: "GET",
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer '+ auth.user.token
                     }
                 });
                 const dataServ = await response.json();
-				const resp = await dataServ.filter((dat) => dat.id_donor._id === props.me.id && (dat.status !== "Cancelada" && dat.status !== "Rechazada")); 
+                console.log(dataServ.data)
+				const resp = await dataServ.data.filter((dat) => dat.id_donor === props.me.id && (dat.status !== "Cancelada" && (dat.status !== "eliminada") && dat.status !== "rechazada")); 
                 setRequests(resp);
             }
             catch(e) {
@@ -31,19 +33,19 @@ const ContactDonor = (props) => {
 		async function responderRequest(request, respuesta) {
 			console.log("Hola");
             const url = auth.url[0] + "request" + auth.url[1] + "/" + request.id;
+            console.log(url)
             try {
+                const dataUp = {status: respuesta}
                 const response = await fetch(url, {
-                    method: "PUT",
+                    method: "PATCH",
                     headers: {
                         'Content-Type': 'application/json',
 						'Authorization': 'Bearer '+ auth.user.token
                     },
-                    body: {
-                        "status": respuesta
-                    }
+                    body:  JSON.stringify(dataUp)
                 })
                 const dataServ = await response.json();
-                console.log(dataServ);
+                console.log(dataServ, respuesta);
 				return respuesta;
             }
             catch(e) {

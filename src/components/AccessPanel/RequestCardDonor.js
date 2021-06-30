@@ -29,8 +29,8 @@ function RequestCardDonor(props){
                 </div>
             </div>
             <div>
-                <button onClick={() => HandleStatus("Aceptar")}>Aceptar</button>
-                <button onClick={() => HandleStatus("Rechazar")}>Rechazar</button>
+                <button onClick={() => HandleStatus("aceptada")}>Aceptar</button>
+                <button onClick={() => HandleStatus("rechazada")}>Rechazar</button>
             </div>
         </div>
     )
