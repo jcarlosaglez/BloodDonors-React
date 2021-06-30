@@ -151,7 +151,7 @@ const RequestDonor = () => {
                                     onChange={handleInputChange}
                                 >
                                     <MenuItem value="">
-                                        <em>No  importa</em>
+                                        <em>None</em>
                                     </MenuItem>
                                     <MenuItem value={"A+"}>A+</MenuItem>
                                     <MenuItem value={"B+"}>B+</MenuItem>
@@ -164,32 +164,34 @@ const RequestDonor = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={11}>
                             <TextField
                                 id="message"
                                 name="message"
-                                value={data.message}
                                 label="Mensaje"
-                                onChange={handleInputChange}
-                                multiline
-                                rowsMax={8}
-                                style={{width:"100%"}}
+                                style={{ margin: 8 }}
+                                placeholder="Mensaje"
+                                helperText="En el mensaje se ingresa la inforcación del pasiente con la que su hospital la identifica:
+                                Número de cama, piso, etc."
+                                fullWidth
+                                margin="normal"
                                 title="En el mensaje se ingresa la inforcación del pasiente con la que su hospital la identifica:
-                                Número de cama, piso, etc. Pregunte a su hospital si no esta segura que información es"
+                                Número de cama, piso, etc."
+                                onChange={handleInputChange}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
                             />
-                        </Grid>
-                        <button className="button-form">
+                        </Grid >
+                        <button className="button-form" style={{marginLeft:"40px"}}>
                             Solicitar
                         </button>
                     </Grid>
-                        <p style={{textAlign: "center"}}>En el mensaje se ingresa la inforcación del pasiente con la que su hospital la identifica: <br />
-                            Número de cama, piso, etc. <br /> Pregunte a su hospital si no esta segura que información.
-                        </p>
                 </form> 
             </div>
             <div className="list-container">
                 <h1>Lista de donadores </h1>
-                    {donors.map(donor => <DonorCard key={donor.id} donor={donor} />)}
+                    {donors.map(donor => <DonorCard key={donor.id} donor={donor} me={data}/>)}
             </div>
 		</div>
     );

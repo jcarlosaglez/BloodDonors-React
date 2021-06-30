@@ -53,7 +53,7 @@ function Signin() {
         })
     }
     const handleDateChange = (date) => {
-        setBirthday(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+        setBirthday(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()+1}`);
     };
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -61,7 +61,7 @@ function Signin() {
 
     React.useEffect(()=> {
         const defaultDate = new Date(2000, 0, 1);
-        setBirthday(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()}`);
+        setBirthday(`${defaultDate.getFullYear()}-${defaultDate.getMonth()+1}-${defaultDate.getDate()+1}`);
     }, [])
 
     React.useEffect(() => {
@@ -94,9 +94,9 @@ function Signin() {
                 return;
 			}
 			const user = await response.json();
-            setErrors({});
-            auth.login(user.user.token);
-		} catch (error) {
+      auth.login(user.token, "receivers");
+      setErrors({});
+     } catch (error) {
 			console.error(error);
 		}
 	};

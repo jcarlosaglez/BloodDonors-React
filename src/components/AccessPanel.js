@@ -6,10 +6,15 @@ import User from  "./AccessPanel/User";
 import "../css/AccessPanel/AcessPanel.css";
 
 function AccessPanel() { 
+  const me = {
+    first_name: "Juan",
+    email: "juang20@gmail.com",
+    id: "609032da0f127e0015984fd9"
+  }
     return (
       <div className="accesPanel">
-          <User />
-          <PanelHome />
+          <User me={me}/>
+          <PanelHome me={me} />
       </div>
     );
 }

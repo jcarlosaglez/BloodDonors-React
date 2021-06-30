@@ -17,6 +17,7 @@ import Box from '@material-ui/core/Box';
 import "../../css/AccessPanel/PanelHome.css";
 //Components
 import RequestDonor from "./RequestDonor";
+import ContactDonor from "./ContactDonor";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -69,8 +70,9 @@ function TabPanel(props) {
     },
   }));
 
-const PanelHome = () => {
-    const classes = useStyles();
+const PanelHome = (props) => {
+		const me = props.me;
+		const classes = useStyles();
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
   
@@ -122,6 +124,7 @@ const PanelHome = () => {
             <Tab label="Bienvenida" {...a11yProps(0)} />
             <Tab label="Solicitud" {...a11yProps(1)} />
             <Tab label="Contactos" {...a11yProps(2)} />
+						<Tab label="Solicitudes" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -130,20 +133,21 @@ const PanelHome = () => {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-          <div className="PanelHome">
-            <div>
+          	<div className="PanelHome">
+        	    <div>
                 <h2> Bienvenido a <br/> Blood Index</h2>
                 <h3>Gracias por apoyar esta iniciativa</h3>  
-            </div>
-        </div>
+      	      </div>
+	  	      </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <div>
-              <h2>Contactos</h2>
-            </div>
+            <ContactDonor me={me}/>
+          </TabPanel>
+          <TabPanel value={value} index={3} dir={theme.direction}>
+            <ContactDonor me={me}/>
           </TabPanel>
         </SwipeableViews>
         {fabs.map((fab, index) => (
@@ -164,4 +168,9 @@ const PanelHome = () => {
       </div>
     );
 }
+
+PanelHome.prototype = {
+	me: PropTypes.object.isRequired
+}
+
 export default PanelHome; 
