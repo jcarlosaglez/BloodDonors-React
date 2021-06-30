@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types';
 import {useState} from "react";
 
-function RequestCard(props){
+function RequestCardDonor(props){
         const request = props.request;
 		const [statusReques, useStatusReques] = useState(request.status);
-		const deletRequest = props.deletRequest;
+		const responderRequest = props.responderRequest;
 
-        const HandleStatus = () => {
-            deletRequest(request);
-            useStatusReques("Cancelada");
+        const HandleStatus = (respuesta) => {
+            responderRequest(request, respuesta);
+            useStatusReques(respuesta);
         }
 		
     return(
         <div>
             <div>
-                <h2> Solicitud de donador </h2>
+                <h2> Solicitud de donador</h2>
                 <div>
-                    <h3> Donador: {request.id_donor.first_name} </h3>
+                    <h3> Donador: {request.id_receiver.first_name} </h3>
                     <h3> Tipo de sangre: {request.required_blood_type }</h3>
                 </div>
                 <div>
@@ -29,13 +29,14 @@ function RequestCard(props){
                 </div>
             </div>
             <div>
-                <button onClick={() => HandleStatus()}>Cancelar </button>
+                <button onClick={() => HandleStatus("Aceptar")}>Aceptar</button>
+                <button onClick={() => HandleStatus("Rechazar")}>Rechazar</button>
             </div>
         </div>
     )
 }
-RequestCard.prototype = {
+RequestCardDonor.prototype = {
     request: PropTypes.object.isRequired,
 }
 
-export default RequestCard;
+export default RequestCardDonor;

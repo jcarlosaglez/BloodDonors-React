@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import RequestCard from "./RequestCard";
+import RequestCardDonor from "./RequestCardDonor";
 import useAuth from "../Auth/useAuth";
 
 const ContactDonor = (props) => {
@@ -17,7 +17,7 @@ const ContactDonor = (props) => {
                     }
                 });
                 const dataServ = await response.json();
-								const resp = await dataServ.filter((dat) => dat.id_receiver._id === props.me.id && (dat.status !== "Cancelada")); 
+				const resp = await dataServ.filter((dat) => dat.id_donor._id === props.me.id && (dat.status !== "Cancelada" && dat.status !== "Rechazada")); 
                 setRequests(resp);
             }
             catch(e) {
@@ -27,19 +27,20 @@ const ContactDonor = (props) => {
         getData();
     },[]);
 
-		async function deletRequest(request) {
+		async function responderRequest(request, respuesta) {
 			console.log("Hola");
             try {
                 const response = await fetch(`https://blood-donors-v1.herokuapp.com/v1/requests/${request.id}`, {
-                    method: "DELETE",
+                    method: "PUT",
                     headers: {
                         'Content-Type': 'application/json',
-												'Authorization': 'Bearer '+ auth.user.token
-                    }
+						'Authorization': 'Bearer '+ auth.user.token
+                    },
+                    "status": respuesta
                 });
                 const dataServ = await response.json();
                 console.log(dataServ);
-								request.status = "Cancelada";
+				return respuesta;
             }
             catch(e) {
                 console.error(e);
@@ -49,7 +50,7 @@ const ContactDonor = (props) => {
 	return(
 		<div>
 			{ requests.length !== 0 ?
-				requests.map(request => <RequestCard key={request.id} request={request} deletRequest={deletRequest}/>)
+				requests.map(request => <RequestCardDonor key={request.id} request={request} responderRequest={responderRequest}/>)
 				: <h2> No hay solicitudes </h2>
 			}
 		</div>

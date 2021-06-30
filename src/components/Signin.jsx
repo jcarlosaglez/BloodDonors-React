@@ -94,7 +94,7 @@ function Signin() {
                 return;
 			}
 			const user = await response.json();
-      auth.login(user.token, "receivers");
+      auth.login(user.token, user.email, "receiver");
       setErrors({});
      } catch (error) {
 			console.error(error);
