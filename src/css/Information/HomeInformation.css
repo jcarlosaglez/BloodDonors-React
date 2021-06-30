@@ -14,3 +14,19 @@
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.padding{
+    padding: 0 40px;
+}
+@media (min-width: 768px) { 
+    .padding{
+        padding: 0 80px;
+    }
+}
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+}
