@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import RequestCardDonor from "./RequestCardDonor";
 import useAuth from "../Auth/useAuth";
 
+//CSS
+import "../../css/AccessPanel/Contact.css";
+
 const ContactDonor = (props) => {
 		const auth = useAuth();
 		const [requests, setRequests] = useState([]);
@@ -54,7 +57,7 @@ const ContactDonor = (props) => {
 		}
 
 	return(
-		<div>
+		<div className="requestList">
 			{ requests.length !== 0 ?
 				requests.map(request => <RequestCardDonor key={request.id} request={request} responderRequest={responderRequest}/>)
 				: <h2> No hay solicitudes </h2>

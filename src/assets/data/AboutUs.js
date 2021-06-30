@@ -27,7 +27,8 @@ const data = [
     },
     {
         "title":"Valores",
-        "text":` 
+        "text":`
+         
         `,
         "url":"https://img.unocero.com/2020/10/nasa-sonidos-espacio-halloween-1200x600.jpg",
         "alt":"Relog"

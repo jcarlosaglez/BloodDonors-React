@@ -20,7 +20,7 @@ export default function NavBarApp() {
 					<MenuIcon />
 				</div>
 				<Link to="/" className="nameApp"> Blood Index </Link>
-				<ul className={activ? "visible" : "hiden"}>
+				<ul className={activ? "visible" : "hiden"} onClick={Update}>
 					<li><NavLink exact to="/" activeClassName="active"> Home </NavLink></li>
 					<li><NavLink exact to="/informacion" activeClassName="active"> Informacion </NavLink></li>
 					<li><NavLink exact to="/informacion/requisitos" activeClassName="active"> Requisitos </NavLink></li>

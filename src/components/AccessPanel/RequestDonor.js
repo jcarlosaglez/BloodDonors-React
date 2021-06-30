@@ -184,6 +184,7 @@ const RequestDonor = () => {
                                 title="En el mensaje se ingresa la inforcación del pasiente con la que su hospital la identifica:
                                 Número de cama, piso, etc."
                                 onChange={handleInputChange}
+                                required
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
