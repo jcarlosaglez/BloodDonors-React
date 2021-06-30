@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({children}) =>{
+    const url = "https://blood-donors-v1.herokuapp.com/v1/";
     const [user, setUser] = useState(
         JSON.parse(localStorage.getItem("token")) || null
     );
@@ -13,13 +14,12 @@ const AuthProvider = ({children}) =>{
         JSON.parse(localStorage.getItem("emailUser")) || null
     )
     useEffect(() => {
-        localStorage.setItem("token", JSON.stringify(user))    
-    },[user])
-    useEffect(() => {
         localStorage.setItem("typeUser", JSON.stringify(type));
         localStorage.setItem("emailUser", JSON.stringify(email));   
-    },[type, email])
+        localStorage.setItem("token", JSON.stringify(user))
+    },[type, email, user])
     const contexValue = {
+        url,
         user,
         email,
 		type,
