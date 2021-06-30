@@ -14,8 +14,12 @@ import DonorCard from "./DonorCard";
 //CSS
 import "../../css/AccessPanel/RequestDonor.css";
 import "../../css/DonorsList.css";
+
 //Data
 import Hospital from '../../assets/data/HospitalCdMx';
+
+//Authentication
+import useAuth from "../Auth/useAuth";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -26,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const RequestDonor = () => {   
     const classes = useStyles();
+    const auth = useAuth();
 
     const [data, setData] = useState({        
         "place_of_residence": "",
@@ -46,8 +51,8 @@ const RequestDonor = () => {
         if(event.target.blood_type.value !== "" && event.target.place_of_residence.value !== ""){
             const getData = async () =>
             {
+                const url = auth.url[0] + "donor" + auth.url[1] + "/";
                 try {
-                    const url = `https://blood-donors-v1.herokuapp.com/v1/donors`;
                     const response = await fetch(url, {
                         method: "GET",
                         headers: {
