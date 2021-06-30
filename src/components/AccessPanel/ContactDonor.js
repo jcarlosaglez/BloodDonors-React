@@ -36,8 +36,10 @@ const ContactDonor = (props) => {
                         'Content-Type': 'application/json',
 						'Authorization': 'Bearer '+ auth.user.token
                     },
-                    "status": respuesta
-                });
+                    body: {
+                        "status": respuesta
+                    }
+                })
                 const dataServ = await response.json();
                 console.log(dataServ);
 				return respuesta;

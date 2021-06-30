@@ -34,7 +34,7 @@ function AccessPanel() {
         }
     }
     GetData();
-  });
+  },[]);
 
   return (
     <div className="accesPanel">

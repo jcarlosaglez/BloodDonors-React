@@ -17,22 +17,22 @@ const AuthProvider = ({children}) =>{
     },[user])
     useEffect(() => {
         localStorage.setItem("typeUser", JSON.stringify(type));
-        localStorage.setItem("emailUser", JSON.stringify(email))    
+        localStorage.setItem("emailUser", JSON.stringify(email));   
     },[type, email])
     const contexValue = {
         user,
         email,
 		type,
         login(token, emailT, typeUser) {
-            setUser({
-                token
+            setType({
+                typeUser
             });
             setEmail(
                 emailT
             );
-            setType({
-                typeUser
-            })
+            setUser({
+                token
+            });
         },
         logout() {
             setUser(null);
