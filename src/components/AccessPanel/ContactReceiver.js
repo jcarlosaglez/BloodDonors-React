@@ -20,7 +20,7 @@ const ContactDonor = (props) => {
                 });
                 const dataServ = await response.json();
                 console.log(dataServ.data)
-				const resp = await dataServ.data.filter((dat) => dat.id_receiver === props.me.id && (dat.status !== "cancelada")); 
+				const resp = await dataServ.data.filter((dat) => dat.id_receiver === props.me.id && (dat.status !== "Cancelada" && dat.status !== "eliminada")); 
                 setRequests(resp);
             }
             catch(e) {
@@ -43,7 +43,7 @@ const ContactDonor = (props) => {
                 });
                 const dataServ = await response.json();
                 console.log(dataServ);
-								request.status = "Cancelada";
+				request.status = "Cancelada";
             }
             catch(e) {
                 console.error(e);
