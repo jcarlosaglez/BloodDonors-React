@@ -17,6 +17,7 @@ import Box from '@material-ui/core/Box';
 import "../../css/AccessPanel/PanelHome.css";
 //Components
 import RequestDonor from "./RequestDonor";
+import ContactReceiver from "./ContactReceiver";
 import ContactDonor from "./ContactDonor";
 
 function TabPanel(props) {
@@ -144,7 +145,7 @@ const PanelHome = (props) => {
             <RequestDonor />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <ContactDonor me={me}/>
+            <ContactReceiver me={me}/>
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
             <ContactDonor me={me}/>

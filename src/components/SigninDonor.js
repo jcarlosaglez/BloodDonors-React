@@ -114,11 +114,11 @@ function SigninDonor() {
 			const response = await goToBackend(config, datos);
 			if (!response.ok) {
                 const errorss = await response.json();
-								setErrors({...errorss.errors});
+				setErrors({...errorss.errors});
                 return;
 			}
 			const user = await response.json();
-      auth.login(user.token, "donor");
+      auth.login(user.token, user.email, "donor");
 			setErrors({});
 						
 		} catch (error) {

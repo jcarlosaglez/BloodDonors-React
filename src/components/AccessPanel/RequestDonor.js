@@ -56,7 +56,7 @@ const RequestDonor = () => {
                     });
                     const dataServ = await response.json();
                     console.log(data);
-                    const resp = await dataServ.filter((dat) => dat.blood_type === data.blood_type ); // && dat.place_of_residence === data.place_of_residence);
+                    const resp = await dataServ.filter((dat) => dat.blood_type === data.blood_type && dat.place_of_residence === data.place_of_residence);
                     setDonors(resp);
                 }
                 catch(e) {
