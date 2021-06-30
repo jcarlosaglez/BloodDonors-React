@@ -7,7 +7,7 @@ function RequestCardDonor(props){
 		const responderRequest = props.responderRequest;
 
         const HandleStatus = (respuesta) => {
-            responderRequest(request, respuesta);
+            console.log(responderRequest(request, respuesta));
             useStatusReques(respuesta);
         }
 		

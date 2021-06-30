@@ -105,12 +105,10 @@ function Login() {
                 return;
 			}
 			const user = await response.json();
-			console.log(user);
 			let typeUser = "";
 			if(isDonor){ 
 				typeUser = "donor"
 			}else{ typeUser = "receiver"}
-			console.log(user.user.email, typeUser, "German");
 			auth.login(user.user.token, user.user.email, typeUser);
 		} catch (error) {
 			console.log(error);

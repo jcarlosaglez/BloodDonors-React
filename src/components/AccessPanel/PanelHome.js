@@ -20,9 +20,12 @@ import RequestDonor from "./RequestDonor";
 import ContactReceiver from "./ContactReceiver";
 import ContactDonor from "./ContactDonor";
 
+//Auth
+import useAuth from "../Auth/useAuth";
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-  
+
     return (
       <Typography
         component="div"
@@ -72,6 +75,14 @@ function TabPanel(props) {
   }));
 
 const PanelHome = (props) => {
+    const auth = useAuth();
+    let media;
+    if(auth === null){
+      media = "donor"
+    } else{
+      media = auth.type.typeUser;
+    }
+    const typeUser = media;
 		const me = props.me;
 		const classes = useStyles();
     const theme = useTheme();
@@ -123,9 +134,8 @@ const PanelHome = (props) => {
             aria-label="action tabs example"
           >
             <Tab label="Bienvenida" {...a11yProps(0)} />
-            <Tab label="Solicitud" {...a11yProps(1)} />
-            <Tab label="Contactos" {...a11yProps(2)} />
-						<Tab label="Solicitudes" {...a11yProps(3)} />
+            {typeUser === "donor" ? <></> : <Tab label="Solicitud" {...a11yProps(1)} />}
+            {typeUser === "donor" ? <Tab label="Solicitudes" {...a11yProps(2)} /> : <Tab label="Contactos" {...a11yProps(2)} /> }
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -141,14 +151,14 @@ const PanelHome = (props) => {
       	      </div>
 	  	      </div>
           </TabPanel>
+          {typeUser === "donor" ? 
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <RequestDonor />
-          </TabPanel>
+            <> </>
+          </TabPanel> 
+          : <RequestDonor />
+          }
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <ContactReceiver me={me}/>
-          </TabPanel>
-          <TabPanel value={value} index={3} dir={theme.direction}>
-            <ContactDonor me={me}/>
+            {typeUser === "donor" ? <ContactDonor me={me}/> : <ContactReceiver me={me}/> }
           </TabPanel>
         </SwipeableViews>
         {fabs.map((fab, index) => (

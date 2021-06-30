@@ -17,7 +17,7 @@ const ContactDonor = (props) => {
                     }
                 });
                 const dataServ = await response.json();
-								const resp = await dataServ.filter((dat) => dat.id_receiver._id === props.me.id && (dat.status !== "Cancelada")); 
+				const resp = await dataServ.filter((dat) => dat.id_receiver._id === props.me.id && (dat.status !== "Cancelada")); 
                 setRequests(resp);
             }
             catch(e) {
@@ -34,7 +34,7 @@ const ContactDonor = (props) => {
                     method: "DELETE",
                     headers: {
                         'Content-Type': 'application/json',
-												'Authorization': 'Bearer '+ auth.user.token
+						'Authorization': 'Bearer '+ auth.user.token
                     }
                 });
                 const dataServ = await response.json();
