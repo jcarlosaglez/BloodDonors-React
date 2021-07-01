@@ -36,7 +36,6 @@ function AccessPanel() {
         }
         catch(e) {
             console.error(e);
-            auth.logout();
         }
     }
     GetData();
